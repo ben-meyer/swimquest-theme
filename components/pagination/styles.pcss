@@ -62,13 +62,17 @@
 
     .next,
     .prev {
+
+        @apply btn--icon;
+        @apply btn--square;
+        
         --btn--background-color: var(--color-background);
         --btn--border-color: var(--color-navy);
-        --btn--color: var(--color-accent);
+        --btn--color: var(--color-navy);
 
         --btn--background-color--hover: var(--color-navy);
         --btn--border-color--hover: var(--color-navy);
-        --btn--color-hover: var(--color-foreground);
+        --btn--color-hover: var(--color-white);
 
         @apply btn--icon;
         @apply btn--square;
@@ -95,6 +99,9 @@
 
 .nav-links > .page-numbers {
     border-radius: unset;
-    border-color: var(--color-navy);
-    border: solid 0.5px;
+    border: solid 0.5px var(--color-navy);
+}
+
+.nav-links > .page-numbers:hover {
+    color: var(--color-white) !important;
 }
