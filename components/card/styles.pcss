@@ -1,6 +1,5 @@
 .g-card {
     --g-card--max-width: 25rem; /* 400px */
-    --g-card--media--ratio: 1 / 1;
     /* --g-card--outer-padding-x: spaceFluid(8, 12); */
     /* --g-card--outer-padding-y: spaceFluid(8, 12); */
     --g-card--inner-padding-x: spaceFluid(8, 12);
@@ -103,7 +102,6 @@
         :where(.g-card__image-inner) {
             overflow: hidden;
             border-radius: var(--g-card--media--border-radius);
-            aspect-ratio: var(--g-card--media--ratio);
 
             > * {
                 object-fit: var(--g-card--image--object-fit, cover);
@@ -159,10 +157,6 @@
         .g-card__content {
             margin-top: space(12);
         }
-    }
-
-    &:where(.g-card--type--trip-style) {
-        --g-card--media--ratio: 1 / 1;
     }
 
     &:where(.g-card--type--horizontal) {

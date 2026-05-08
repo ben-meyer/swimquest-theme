@@ -55,7 +55,6 @@
         .g-card {
             width: 100%;
             max-width: none;
-            --g-card--media--ratio: 1 / 1;
         }
     }
 
@@ -118,6 +117,7 @@
             display: grid;
             grid-template-columns: repeat(var(--grid--columns), minmax(0, 1fr));
             justify-content: normal;
+            margin-bottom: var(--section--header--margin-bottom);
         }
 
         .g-card {

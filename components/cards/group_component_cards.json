@@ -448,8 +448,7 @@
             },
             "choices": {
                 "default": "Default",
-                "contain": "Contain",
-                "cover": "Cover"
+                "contain": "Contain"
             },
             "default_value": false,
             "allow_null": 0,

@@ -28,14 +28,6 @@
                     <?= \Gust\Components\TripCard::make(...$card); ?>
                 <?php } ?>
             </div>
-
-            <?php if (! empty($this->button)) { ?>
-                <div class="trip-cards__footer">
-                    <div class="trip-cards__more-link">
-                        <?= \Gust\Components\Link::make(...$this->button); ?>
-                    </div>
-                </div>
-            <?php } ?>
         </div>
     </section>
 <?php } ?>

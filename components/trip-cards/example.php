@@ -32,13 +32,12 @@ $items = array_map(fn ($trip) => ['object' => $trip], $trips);
 
     <?php if (count($items) > 3) { ?>
         <section class="component-example-section">
-            <h2 class="component-example-section__title">Trip Cards - 6 Items with Button</h2>
-            <p class="component-example-section__description">Full grid with footer CTA button.</p>
+            <h2 class="component-example-section__title">Trip Cards - 6 Items</h2>
+            <p class="component-example-section__description">Full grid.</p>
             <div class="component-example-section__preview">
                 <?= TripCards::make(
                     heading: 'Explore All Trips',
                     items: $items,
-                    button: ['url' => '#', 'title' => 'Browse All Trips', 'target' => ''],
                 ); ?>
             </div>
         </section>

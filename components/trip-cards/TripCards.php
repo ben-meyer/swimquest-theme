@@ -50,10 +50,6 @@ class TripCards extends ComponentBase
             }
         }
 
-        if (! empty($args['button'])) {
-            $args['button']['classes'] = ['btn', 'color-context-white'];
-        }
-
         return $args;
     }
 }
