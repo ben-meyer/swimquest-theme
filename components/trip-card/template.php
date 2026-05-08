@@ -35,7 +35,7 @@
             <?= \Gust\Components\Link::make(
                 title: __('View Trip & Book', 'gust'),
                 url: $this->content['url'],
-                classes: ['btn', 'trip-card__cta', 'color-context-orange'],
+                classes: ['btn', 'trip-card__cta'],
             ); ?>
         <?php } ?>
     </div>
