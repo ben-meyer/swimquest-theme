@@ -224,6 +224,25 @@
         }
     }
 
+    &:where(.page-header--type--story) {
+        --page-header--padding-block: spaceFluid(16, 24);
+        --page-header--content--spacing: space(8);
+
+        .page-header__heading {
+            @apply type-h3;
+            text-transform: capitalize;
+
+            color: var(--color-navy);
+            max-width: none;
+        }
+
+        .page-header__meta {
+            @apply type-quote-credit;
+
+            color: var(--color-mid-blue);
+        }
+    }
+
     &:where(.page-header--type--guide) {
         --page-header--grid-alignment-x: flex-start;
         --page-header--text-align: left;

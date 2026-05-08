@@ -107,6 +107,15 @@ class PageHeader extends ComponentBase
                     if (empty($object->post_parent)) {
                         $args['show_breadcrumbs'] = false;
                     }
+                } elseif ($object->post_type === 'story') {
+                    $args['background'] = 'none';
+                    $args['image'] = null;
+                    $args['type'] = 'story';
+                    $args['classes'][] = 'page-header--align-left';
+
+                    if ($contributor = \get_field('contributor_name', $object->ID)) {
+                        $args['meta'] = sprintf(__('By %s', 'gust'), $contributor);
+                    }
                 } elseif ($object->post_type === 'guide') {
                     $is_guide = true;
 
