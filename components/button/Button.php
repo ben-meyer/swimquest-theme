@@ -35,7 +35,7 @@ class Button extends ComponentBase
      */
     public static function make(
         string $content = '',
-        array $classes = ['btn'],
+        array $classes = [],
         bool $screen_reader_text = false,
         string $type = 'button',
         string $variant = 'primary',
