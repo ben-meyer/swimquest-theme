@@ -29,6 +29,7 @@ class Menu extends ComponentBase
         mixed $heading = null,
         mixed $max_depth = null,
         mixed $theme_location = null,
+        ?string $aria_label = null,
         ...$others
     ): ?static {
         return static::createFromArgs(static::mergeArgs(get_defined_vars()));

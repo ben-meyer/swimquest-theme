@@ -33,6 +33,7 @@ use Gust\Components\Image;
                     'type-small',
                 ],
                 heading: true,
+                aria_label: __('Footer', 'gust'),
             ); ?>
 
             <div class="site-footer__right">

@@ -18,7 +18,7 @@
             content_filter: '',
         ); ?>
 
-        <nav class="site-header__nav">
+        <nav class="site-header__nav" aria-label="<?= esc_attr__('Primary', 'gust') ?>">
             <?= \Gust\Components\Menu::make(
                 theme_location: 'header',
                 menu_id: 'main-menu-desktop',
@@ -51,6 +51,7 @@
                 theme_location: 'header',
                 menu_id: 'main-menu',
                 classes: ['site-header__navigation'],
+                aria_label: __('Primary', 'gust'),
             ); ?>
 
             <?php if (! empty($this->content['call_to_action_1'])) { ?>

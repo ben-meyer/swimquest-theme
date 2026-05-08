@@ -1,4 +1,4 @@
-<nav class="<?= classes('trip-section-nav', 'wp-block', 'alignfull', $this->classes) ?>" <?= attributes($this->attributes) ?>>
+<nav class="<?= classes('trip-section-nav', 'wp-block', 'alignfull', $this->classes) ?>" aria-label="<?= esc_attr__('Trip sections', 'gust') ?>" <?= attributes($this->attributes) ?>>
     <div class="trip-section-nav__inner content-width-fluid-lg">
         <ul class="trip-section-nav__items">
             <?php foreach ($this->items as $item) { ?>

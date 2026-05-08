@@ -1,4 +1,4 @@
-<nav class="<?= classes('menu', $this->classes) ?>" <?= attributes($this->attributes) ?>>
+<nav class="<?= classes('menu', $this->classes) ?>"<?= $this->aria_label ? ' aria-label="'.esc_attr($this->aria_label).'"' : '' ?> <?= attributes($this->attributes) ?>>
     <div class="menu__inner">
         <?php if (! empty($this->heading)) { ?>
             <?= \Gust\Components\Heading::make(
