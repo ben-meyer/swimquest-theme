@@ -12,7 +12,7 @@ use Gust\Components\Button;
     <h2 class="component-example-section__title">Primary Button</h2>
     <p class="component-example-section__description">Primary button with text content.</p>
     <div class="component-example-section__preview">
-        <?= Button::make(content: 'Primary Button'); ?>
+        <?= Button::make(content: 'Primary Button', classes: ['btn']); ?>
     </div>
 </section>
 
@@ -20,7 +20,7 @@ use Gust\Components\Button;
     <h2 class="component-example-section__title">Secondary Button</h2>
     <p class="component-example-section__description">Secondary button with text content.</p>
     <div class="component-example-section__preview">
-        <?= Button::make(content: 'Secondary Button', variant: 'secondary'); ?>
+        <?= Button::make(content: 'Secondary Button', classes: ['btn', 'btn--theme-2']); ?>
     </div>
 </section>
 
@@ -28,7 +28,7 @@ use Gust\Components\Button;
     <h2 class="component-example-section__title">Inactive Button</h2>
     <p class="component-example-section__description">Inactive button with text content.</p>
     <div class="component-example-section__preview">
-        <?= Button::make(content: 'Inactive Button', variant: 'inactive'); ?>
+        <?= Button::make(content: 'Inactive Button', classes: ['btn', 'btn--inactive']); ?>
     </div>
 </section>
 
@@ -36,7 +36,7 @@ use Gust\Components\Button;
     <h2 class="component-example-section__title">Ghost Button</h2>
     <p class="component-example-section__description">Ghost button with text content.</p>
     <div class="component-example-section__preview">
-        <?= Button::make(content: 'Ghost Button', variant: 'ghost'); ?>
+        <?= Button::make(content: 'Ghost Button', classes: ['btn', 'btn--ghost']); ?>
     </div>
 </section>
 
@@ -44,7 +44,7 @@ use Gust\Components\Button;
     <h2 class="component-example-section__title">No class passed</h2>
     <p class="component-example-section__description">Default button with no variant class passed.</p>
     <div class="component-example-section__preview">
-        <?= Button::make(content: 'No class passed'); ?>
+        <?= Button::make(content: 'No class variant passed', classes: ['btn']); ?>
     </div>
 </section>
 
