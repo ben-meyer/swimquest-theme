@@ -796,7 +796,6 @@ Grid of logos with optional links and a selectable aspect ratio.
 - **logos** (repeater)
   - **image** (image, return: array)
   - **link** (link)
-- **image_aspect_ratio** (button_group: default, square) - Logo image ratio. Present in the ACF field group but not currently consumed by the renderer.
 
 **Programmatic-only inputs:**
 - **featured_text** (text) - Optional small label rendered above the heading
