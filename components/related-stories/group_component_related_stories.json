@@ -1,0 +1,51 @@
+{
+    "key": "group_component_related_stories",
+    "title": "Block - Related Stories",
+    "fields": [
+        {
+            "key": "field_rs_heading",
+            "label": "Heading",
+            "name": "heading",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Leave blank to use the default heading (\"Related stories\").",
+            "required": 0,
+            "default_value": "",
+            "placeholder": "Related stories"
+        },
+        {
+            "key": "field_rs_stories",
+            "label": "Stories",
+            "name": "stories",
+            "aria-label": "",
+            "type": "relationship",
+            "instructions": "Choose up to two stories to display.",
+            "required": 0,
+            "post_type": ["story"],
+            "taxonomy": "",
+            "filters": ["search"],
+            "elements": "",
+            "min": "",
+            "max": "2",
+            "return_format": "object"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf/related-stories"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0
+}
