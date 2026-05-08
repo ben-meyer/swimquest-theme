@@ -85,6 +85,10 @@ Core swim holiday product. Each post represents a trip that may run on multiple 
   - **enquiry_url** (url) - Enquiry link for that departure
 - **itinerary** (post_object, post_type: itinerary, allow_null: true) - Linked reusable itinerary
 - **accommodation** (post_object, post_type: accommodation, allow_null: true) - Linked accommodation post
+- **intro_lead** (textarea) - Large intro paragraph shown above the highlights
+- **intro_body** (textarea) - Standard intro paragraph shown below the lead
+- **intro_gallery** (gallery) - Gallery shown above the highlights, after the intro paragraphs
+- **mid_gallery** (gallery) - Gallery shown below the itinerary preview block
 - **highlights** (repeater, max: 4) - Highlight cards used in the locked Highlights section
   - **image** (image, return: array)
   - **heading** (text)
@@ -98,7 +102,7 @@ Core swim holiday product. Each post represents a trip that may run on multiple 
   - **start_time** (text) - Optional departure time displayed at the top of the stage
   - **finish_time** (text) - Optional arrival time displayed at the end of the stage
   - **steps** (repeater)
-    - **icon** (select: plane, ferry, car, bus, train, walk)
+    - **icon** (select: plane, ferry, car, bus, train, walk) — `walk` is handled in the template but missing from the ACF field choices
     - **title** (text)
     - **description** (wysiwyg)
 - **reviews_embed_code** (textarea) - Raw embed code for the Reviews section
@@ -115,7 +119,7 @@ Core swim holiday product. Each post represents a trip that may run on multiple 
 - Template: Hard-coded PHP single via `TripSingle` orchestrator component
 - Route: single:trip
 - Editor model: classic admin screen with Gutenberg disabled and no main content editor
-- Layout order: Trip Page Header, Section Nav, Highlights, Itinerary, Accommodation, What's Included, Getting There, Reviews, FAQs, Dates & Book, Promo, Get In Touch, Related Stories, Related Trips
+- Layout order: Trip Page Header, Section Nav, **Trip Intro**, **Gallery (intro)**, Highlights, Itinerary, **Gallery (mid)**, Accommodation, What's Included, Getting There, Reviews, FAQs, Dates & Book, Promo, Get In Touch, Related Stories, Related Trips
 - Render rule: any section with no content must not render on the front end, and its jump link must also be hidden
 
 ---
@@ -388,6 +392,21 @@ Logo is a static SVG file (`logo-alt.svg`) rendered via `Gust\Image::get()` — 
   - **value** (text)
   - **url** (text)
 
+### Analytics (acf-options-general — separate ACF group `group_analytics`)
+
+- **gtm_enabled** (true_false, default: 0) - Enable Google Tag Manager
+- **gtm_code** (text) - GTM container ID (e.g. `GTM-XXXXXXX`). Conditionally shown when `gtm_enabled` is true
+- **analytics_privacy_first** (true_false, default: 1) - Disables Google Signals and ad personalisation. Conditionally shown when `gtm_enabled` is true
+- **head_scripts** (repeater) - Scripts to inject into `<head>`. Each row can optionally require cookie consent
+  - **head_script_html** (textarea) - Full `<script>` tag or inline HTML
+  - **head_script_requires_consent** (true_false, default: 1) - Block execution until cookies accepted
+- **body_scripts** (repeater) - Scripts to inject after `<body>` open. Same sub-fields as head_scripts
+
+### Cookie Consent (acf-options-general — separate ACF group `group_cookie-consent`)
+
+- **cookie_consent_enabled** (true_false, default: 1) - Show the cookie consent banner
+- **cookie_consent_text** (wysiwyg, default: "We use cookies...") - Banner message text. Conditionally shown when `cookie_consent_enabled` is true
+
 ### Header (acf-options-header)
 
 - **header_call_to_action_1** (link) - Primary CTA button in the site header
@@ -497,7 +516,8 @@ Full-width hero that auto-populates from the current page, post, term, or router
 
 **Auto-population by context:**
 - `post` (blog): hero featured image, adds publication date and author as meta, applies `article` type, removes background colour
-- `guide`: square 300px featured image (when present), suppresses breadcrumbs, forces subheading to "Meet our team", removes background, applies `guide` type
+- `story`: removes background and image, applies left-aligned variant (`page-header--align-left`), suppresses breadcrumbs, applies `story` type. Reads `contributor_name` field and renders "By {name}" as meta text.
+- `guide`: square 300px featured image (when present), suppresses breadcrumbs, forces subheading to "Meet our team", removes background, applies `guide` type. The subheading renders **above** the heading, while the heading renders below — this is the only type where the order is reversed.
 - `accommodation` / `itinerary`: removes background and image, applies left-aligned variant (`page-header--align-left`), suppresses breadcrumbs, injects a "Back" link to the post-type archive (falls back to home)
 - `trip_style` term: pulls `subheading` from term-level ACF fields (`group_trip_style_taxonomy`); suppresses hero image on archives
 - General `WP_Term`: reads `subheading` and `image` from term ACF fields if available
@@ -680,7 +700,7 @@ Full-viewport-width image block (`acf/image-full-width`). Uses CSS breakout patt
 
 ### Cards [Block]
 
-Responsive card grid for taxonomy terms, editorial posts, and custom content. Does **not** handle Trip posts — use `TripCards` for those (exception: `TripRelatedTrips` uses `Cards` for related trip rendering).
+Responsive card grid for taxonomy terms, editorial posts, and custom content. Does **not** handle Trip posts — use `TripCards` for those (exception: `TripRelatedTrips` uses `TripCards` for related trip rendering).
 
 **Fields:**
 - **heading** (text) - Section heading
@@ -698,12 +718,12 @@ Responsive card grid for taxonomy terms, editorial posts, and custom content. Do
 - **selected_trip_styles** (taxonomy, trip_style, multi_select) - Specific trip styles when `card_source` is `trip_styles`; empty = all
 - **selected_destinations** (taxonomy, country, multi_select, min: 2, max: 6) - Specific destinations when `card_source` is `destinations`; empty = all
 - **type** (button_group: default, horizontal, carousel) - Switches card layout
-- **card_image_fit** (select: default, contain, cover) - Image fit mode
+- **card_image_fit** (select: default, contain) - Image fit mode
 - **columns** (select: 2, 3, 4) - Grid column count
-- **slider_on_mobile** (true_false) - Enable horizontal scroll on smaller screens
+- **slider_on_mobile** (true_false) - Enable horizontal scroll on smaller screens. Conditionally hidden when `type` is `carousel`.
 
 **Runtime behaviour:**
-- When `card_source` is `trip_styles` or `destinations`, read-more button auto-sets to "Find Your Trip"; otherwise "Read More"
+- When `card_source` is `trip_styles` or `destinations`, or when the programmatic `card_type` arg is `trip-style`, read-more button auto-sets to "Find Your Trip"; otherwise "Read More"
 - On taxonomy archives, applies `cards--taxonomy-term-grid` CSS class
 
 ### Card [Partial]
@@ -723,7 +743,6 @@ Single card renderer used by the `Cards` block and archive grids.
 - **card_source** (button_group: recent, selected) - Trip source
 - **limit** (button_group: 3, 6) - Number of recent trips to query (max 6)
 - **selected** (relationship, post_type: trip, min: 1, max: 6) - Manual trip selection when `card_source` is `selected`
-- **button** (link) - Optional footer CTA
 
 **Archive usage:**
 - `trip_style`, `country`, and `city` taxonomy archives render TripCards with the queried trips (no block fields, populated from the archive query)
@@ -777,11 +796,13 @@ Grid of logos with optional links and a selectable aspect ratio.
 - **logos** (repeater)
   - **image** (image, return: array)
   - **link** (link)
-- **image_aspect_ratio** (button_group: default, square) - Logo image ratio
+- **image_aspect_ratio** (button_group: default, square) - Logo image ratio. Present in the ACF field group but not currently consumed by the renderer.
 
 **Programmatic-only inputs:**
 - **featured_text** (text) - Optional small label rendered above the heading
 - **columns** (number) - Override grid column count (adds `cards--columns-{n}` class)
+- **background_color** (text) - Adds `has-{color}-background-color` and `has-background` classes when set and not `none`
+- **display** (text, default: `grid`) - Passed to the template as `logo-grid--{$display}` class
 
 ### Media & Content [Block]
 
@@ -802,7 +823,7 @@ Split layout combining text content with either an image or a video.
 Pull quote with optional credit and role.
 
 **Fields:**
-- **quote** (textarea) - Quote text
+- **quote** (textarea, required) - Quote text. Newlines are rendered via `nl2br()` in the template; the ACF field uses no auto-formatting.
 - **credit** (text) - Person or source name
 - **role** (text) - Role or title
 
@@ -811,14 +832,14 @@ Pull quote with optional credit and role.
 Server-rendered departure list for the current trip.
 
 **Fields:**
-- No block fields. Reads the current trip's `dates` repeater field. Night count and price-display fields are computed but not currently rendered (commented out in template).
+- No block fields. Reads the current trip's `dates` repeater field. Night count and price-display fields are computed and rendered on each departure row.
 
 ### Taxonomy Filters [Partial]
 
 Derived filter bar that renders term links for the current taxonomy or object context.
 
 **Fields:**
-- No editor fields. Runtime inputs include `taxonomy`, `object`, `current_item`, `label`, and `show`.
+- No editor fields. Runtime inputs include `taxonomy`, `current_item`, `label`, and `show`. The `label` defaults to "Filter by {taxonomy singular name}" when a taxonomy is provided.
 
 ### Gallery [Block]
 
@@ -887,6 +908,55 @@ Server-rendered chronological departure listing for the `/calendar/` route. Grou
 
 **Fields:**
 - No editor fields. Driven by the active trip query.
+
+### Event Single [Partial]
+
+Top-level orchestrator for the entire `events` single template. Validates the current post is of type `events`, reads the `faqs` ACF field, and delegates rendering to all locked event components in layout order.
+
+**Render rule:**
+- Only renders when the current post is of type `events`
+
+**Layout order:** Trip Page Header, Section Nav, Highlights, Itinerary Preview, Accommodation Preview, What's Included, Getting There, Reviews, FAQs, Dates & Book, Get In Touch, Related Stories, Related Trips
+
+**Data source:**
+- Post-level ACF: `faqs` (repeater with `question` and `answer` sub-fields) — mapped into Accordion items
+
+### Related Stories [Block]
+
+Standalone editor block (`acf/related-stories`) that shows up to two related stories side by side. Distinct from `Trip Related Stories` which is hard-coded on trip singles.
+
+**Fields:**
+- **heading** (text) - Optional heading (defaults to "Related stories" if left blank)
+- **stories** (relationship, post_type: story, max: 2) - Story posts to display
+
+**Render rule:**
+- Do not render if `stories` is empty
+
+### Testimonial Card [Partial]
+
+Single testimonial / review card renderer used by `TestimonialCards`. Consumes a prepared data array with star rating, quote, and author info.
+
+**Fields:**
+- No editor fields. Programmatic-only inputs consumed at runtime:
+  - **stars** (number, 0–5) - Star rating
+  - **quote** (string) - Testimonial text
+  - **author_name** (string) - Author name
+  - **author_detail** (string) - Role or location text
+  - **image** (array) - Optional author portrait image
+  - **url** (string) - Optional link URL wrapping the quote
+
+**Render rule:**
+- Do not render if `quote` is empty
+
+### Trip Intro [Partial]
+
+Intro paragraphs for the trip single page. Renders a large lead paragraph and a standard body paragraph from post-level ACF fields.
+
+**Render rule:**
+- Do not render if both `intro_lead` and `intro_body` are empty
+
+**Data source:**
+- Post-level ACF: `intro_lead` (textarea), `intro_body` (textarea)
 
 ---
 
