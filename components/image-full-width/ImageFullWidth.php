@@ -38,10 +38,10 @@ class ImageFullWidth extends ComponentBase
         $args['size'] = 'full_width';
 
         $existingClass = trim($args['attributes']['class'] ?? '');
-        $args['attributes']['class'] = trim(($existingClass ? $existingClass . ' ' : '') . 'h-[600px] object-cover block');
+        $args['attributes']['class'] = trim(($existingClass ? $existingClass . ' ' : '') . 'alignfull h-[600px] object-cover block');
 
         $existingStyle = trim($args['attributes']['style'] ?? '');
-        $args['attributes']['style'] = trim(($existingStyle ? $existingStyle . '; ' : '') . 'position:relative;left:50%;margin-left:-50vw;width:100vw;max-width:100vw;min-width:100vw;height:min(600px,100vw);object-fit:cover;display:block;');
+        $args['attributes']['style'] = trim(($existingStyle ? $existingStyle . '; ' : '') . 'width:100%;height:min(600px,100vw);object-fit:cover;display:block;');
 
         if (empty($args['attributes']['sizes'])) {
             $args['attributes']['sizes'] = '100vw';

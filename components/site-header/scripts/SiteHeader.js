@@ -3,6 +3,14 @@ import isElementVisible from '../../../assets/scripts/helpers/isElementVisible.j
 
 const OFFSET_SELECTOR = '[data-header-offset]';
 const ADMIN_BAR_SELECTOR = '#wpadminbar';
+const FOCUSABLE_SELECTOR = [
+    'a[href]',
+    'button:not([disabled])',
+    'input:not([disabled])',
+    'select:not([disabled])',
+    'textarea:not([disabled])',
+    '[tabindex]:not([tabindex="-1"])',
+].join(',');
 
 export default class SiteHeader {
     constructor(element) {
@@ -10,13 +18,13 @@ export default class SiteHeader {
         this.barEl = this.el.querySelector('.site-header__bar');
         this.burgerEl = this.el.querySelector('.site-header__burger');
         this.menuPanelEl = this.el.querySelector('.site-header__menu-panel');
-        this.searchPanelEl = this.el.querySelector('.site-header__search-panel');
-        this.searchDesktopEl = this.el.querySelector('.site-header__search-desktop');
 
         this.buttonsEl = this.el.querySelector('.site-header__buttons');
         this.menuTogglerEls = this.el.querySelectorAll('.js-site-header-toggle');
-        this.searchTogglerEls = this.el.querySelectorAll('.js-search-toggle');
-        this.searchCloseEl = this.el.querySelector('.js-search-close');
+        this.toggleLabelEl = this.el.querySelector('.js-site-header-toggle-label');
+
+        this.handleTrapKeydown = this.handleTrapKeydown.bind(this);
+        this.previousFocusEl = null;
 
         this.init();
     }
@@ -24,35 +32,38 @@ export default class SiteHeader {
     init() {
         this.calculateOffset();
         this.initHeroMode();
+        this.initStickyScroll();
 
         const debouncedResize = debounce(() => {
             this.calculateOffset();
             this.updateHeroScroll();
             if (!this.isMobileMode()) {
-                this.closeAllPanels();
+                this.closeMenu();
             }
         }, 50);
 
         window.addEventListener('resize', debouncedResize);
 
-        const observer = new MutationObserver(debounce(() => this.calculateOffset(), 50));
-        observer.observe(document.body, { childList: true, subtree: true });
+        // Watch only the admin bar and any [data-header-offset] elements for size changes
+        // rather than mutations across the whole document.
+        const offsetTargets = [
+            document.querySelector(ADMIN_BAR_SELECTOR),
+            ...document.querySelectorAll(OFFSET_SELECTOR),
+        ].filter(Boolean);
+
+        if (offsetTargets.length && typeof ResizeObserver !== 'undefined') {
+            const resizeObserver = new ResizeObserver(debounce(() => this.calculateOffset(), 50));
+            offsetTargets.forEach((target) => resizeObserver.observe(target));
+        }
 
         this.menuTogglerEls?.forEach((toggle) => {
             toggle.addEventListener('click', () => this.toggleMenu());
         });
 
-        this.searchTogglerEls?.forEach((toggle) => {
-            toggle.addEventListener('click', () => this.toggleSearch());
-        });
-
-        if (this.searchCloseEl) {
-            this.searchCloseEl.addEventListener('click', () => this.closeSearch());
-        }
-
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                this.closeAllPanels();
+            if (e.key === 'Escape' && this.menuPanelEl && !this.menuPanelEl.inert) {
+                this.closeMenu();
+                this.burgerEl?.focus();
             }
         });
     }
@@ -73,6 +84,29 @@ export default class SiteHeader {
 
         this.updateHeroScroll();
         window.addEventListener('scroll', () => this.updateHeroScroll(), { passive: true });
+    }
+
+    initStickyScroll() {
+        this.lastScrollY = window.scrollY;
+
+        window.addEventListener('scroll', () => {
+            if (this.isMobileMode()) return;
+
+            const currentScrollY = window.scrollY;
+            const headerHeight = this.barEl.offsetHeight;
+
+            if (currentScrollY > headerHeight) {
+                if (currentScrollY > this.lastScrollY) {
+                    this.el.classList.add('site-header--hidden');
+                } else {
+                    this.el.classList.remove('site-header--hidden');
+                }
+            } else {
+                this.el.classList.remove('site-header--hidden');
+            }
+
+            this.lastScrollY = currentScrollY;
+        }, { passive: true });
     }
 
     updateHeroScroll() {
@@ -113,18 +147,29 @@ export default class SiteHeader {
     }
 
     openMenu() {
-        this.closeSearch();
+        if (!this.menuPanelEl) return;
 
-        if (this.menuPanelEl) {
-            this.menuPanelEl.inert = false;
-        }
+        this.previousFocusEl = document.activeElement;
+        this.menuPanelEl.inert = false;
 
         this.menuTogglerEls?.forEach((toggle) => {
             toggle.setAttribute('aria-expanded', 'true');
         });
 
+        if (this.toggleLabelEl) {
+            this.toggleLabelEl.textContent = 'Close main menu';
+        }
+
         document.documentElement.classList.add('no-scroll');
         this.setInertOnSiblings(true);
+
+        // Move focus into the panel and trap it there
+        const focusables = this.getFocusableEls();
+        if (focusables.length) {
+            focusables[0].focus();
+        }
+
+        document.addEventListener('keydown', this.handleTrapKeydown);
     }
 
     closeMenu() {
@@ -136,68 +181,45 @@ export default class SiteHeader {
             toggle.setAttribute('aria-expanded', 'false');
         });
 
-        document.documentElement.classList.remove('no-scroll');
-        this.setInertOnSiblings(false);
-    }
-
-    toggleSearch() {
-        const isSearchOpen = this.isMobileMode()
-            ? this.searchPanelEl?.inert === false
-            : !this.searchDesktopEl?.hidden;
-
-        if (isSearchOpen) {
-            this.closeSearch();
-        } else {
-            this.openSearch();
-        }
-    }
-
-    openSearch() {
-        this.closeMenu();
-
-        this.searchTogglerEls?.forEach((toggle) => {
-            toggle.setAttribute('aria-expanded', 'true');
-        });
-
-        if (this.isMobileMode()) {
-            if (this.searchPanelEl) {
-                this.searchPanelEl.inert = false;
-                const input = this.searchPanelEl.querySelector('input');
-                if (input) {
-                    input.focus();
-                }
-            }
-            document.documentElement.classList.add('no-scroll');
-            this.setInertOnSiblings(true);
-        } else if (this.searchDesktopEl) {
-            this.searchDesktopEl.removeAttribute('hidden');
-            const input = this.searchDesktopEl.querySelector('input');
-            if (input) {
-                input.focus();
-            }
-        }
-    }
-
-    closeSearch() {
-        this.searchTogglerEls?.forEach((toggle) => {
-            toggle.setAttribute('aria-expanded', 'false');
-        });
-
-        if (this.searchPanelEl) {
-            this.searchPanelEl.inert = true;
-        }
-
-        if (this.searchDesktopEl) {
-            this.searchDesktopEl.setAttribute('hidden', '');
+        if (this.toggleLabelEl) {
+            this.toggleLabelEl.textContent = 'Open main menu';
         }
 
         document.documentElement.classList.remove('no-scroll');
         this.setInertOnSiblings(false);
+
+        document.removeEventListener('keydown', this.handleTrapKeydown);
+
+        // Restore focus to whatever was focused before the menu opened (usually the burger).
+        if (this.previousFocusEl && typeof this.previousFocusEl.focus === 'function') {
+            this.previousFocusEl.focus();
+        }
+        this.previousFocusEl = null;
     }
 
-    closeAllPanels() {
-        this.closeMenu();
-        this.closeSearch();
+    getFocusableEls() {
+        if (!this.menuPanelEl) return [];
+        return Array.from(this.menuPanelEl.querySelectorAll(FOCUSABLE_SELECTOR))
+            .filter((el) => !el.hasAttribute('disabled') && el.offsetParent !== null);
+    }
+
+    handleTrapKeydown(e) {
+        if (e.key !== 'Tab') return;
+
+        const focusables = this.getFocusableEls();
+        if (!focusables.length) return;
+
+        const first = focusables[0];
+        const last = focusables[focusables.length - 1];
+        const active = document.activeElement;
+
+        if (e.shiftKey && active === first) {
+            e.preventDefault();
+            last.focus();
+        } else if (!e.shiftKey && active === last) {
+            e.preventDefault();
+            first.focus();
+        }
     }
 
     setInertOnSiblings(inert) {

@@ -4,6 +4,7 @@
     :root {
         --site-header--height: space(70);
         --site-header--top: 0px; /* Set by JS: includes admin bar + other [data-header-offset] elements */
+        --site-header--bottom: calc(var(--site-header--top) + var(--site-header--height));
         --site-header--menu--duration: 250ms;
         --site-header--menu--ease: ease-in-out;
 
@@ -21,7 +22,7 @@
     --link--color: var(--color-foreground);
     --link--color-hover: var(--color-foreground);
     --link--text-decoration: none;
-    --link--text-decoration-hover: underline;
+    --link--text-decoration--hover: underline;
 
     --menu-item--gap: space(24);
     --menu-item--arrow-size: 0.8125rem;
@@ -89,7 +90,6 @@
 
         padding-right: 0;
         padding-left: 0;
-        background-color: transparent;
     }
 }
 
@@ -122,27 +122,6 @@
 .site-header__burger {
     flex: 0 0 auto;
     margin-right: calc(var(--burger--padding) * -0.5);
-}
-
-.site-header__search-toggler {
-    --btn--icon-size: rem(18px);
-
-    position: relative;
-    flex: 0 0 auto;
-
-    .site-header__close-icon {
-        .burger__line--1 {
-            transform: rotate(45deg);
-        }
-
-        .burger__line--2 {
-            opacity: 0;
-        }
-
-        .burger__line--3 {
-            transform: rotate(-45deg);
-        }
-    }
 }
 
 .site-header__logo {
@@ -282,53 +261,6 @@
         gap: var(--menu-item--gap);
         padding: space(40) var(--container-padding) var(--container-padding);
     }
-}
-
-.site-header__search-panel {
-    .site-header__panel-content {
-        align-items: center;
-        justify-content: center;
-        padding: var(--container-padding);
-    }
-}
-
-.site-header__search-desktop-wrapper {
-    display: flex;
-    align-items: center;
-    position: relative;
-}
-
-.site-header__search-desktop {
-    position: absolute;
-    right: 100%;
-    display: flex;
-    align-items: center;
-    opacity: 0;
-    pointer-events: none;
-    transition:
-        opacity var(--site-header--menu--duration) var(--site-header--menu--ease),
-        visibility var(--site-header--menu--duration);
-    visibility: hidden;
-    background-color: var(--color-neutral);
-    width: 450px;
-
-    .header-search {
-        max-width: unset;
-    }
-
-    &:not([hidden]) {
-        display: flex;
-        opacity: 1;
-        pointer-events: auto;
-        visibility: visible;
-    }
-}
-
-.site-header__search-close {
-    --btn--icon-size: space(18);
-
-    padding: 0;
-    border: 0;
 }
 
 .site-header__call-to-action-1 {

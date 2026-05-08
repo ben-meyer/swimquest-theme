@@ -106,6 +106,16 @@
 }
 
 @utility btn--ghost {
+    --btn--color: var(--color-foreground);
+    --btn--background-color: transparent;
+    --btn--border-color: transparent;
+
+    --btn--background-color--hover: transparent;
+    --btn--border-color--hover: transparent;
+    --btn--color-hover: var(--color-foreground);
+}
+
+@utility btn--inactive {
     --btn--color: rgb(from var(--color-white) r g b / 0.4);
     --btn--background-color: var(--color-navy);
     --btn--border-color: var(--color-navy);
@@ -113,6 +123,8 @@
     cursor: not-allowed;
     pointer-events: none;
 }
+
+
 
 /* @apply btn--theme-3 { */
 /*     --btn--background-color: var(--color-accent); */
