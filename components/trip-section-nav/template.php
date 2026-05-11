@@ -18,7 +18,7 @@
                     title: __('Make an enquiry', 'gust'),
                     url: $this->enquiry_url,
                     target: '_blank',
-                    classes: ['btn', 'btn--secondary'],
+                    classes: ['btn', 'btn--theme-2'],
                 ); ?>
             <?php } ?>
 
@@ -28,7 +28,7 @@
                         title: $this->booking_action['label'],
                         url: $this->booking_action['url'],
                         target: $this->booking_action['target'] ?? null,
-                        classes: ['btn', 'color-context-orange'],
+                        classes: ['btn'],
                     ); ?>
                 <?php } else { ?>
                     <span class="btn trip-section-nav__status"><?= esc_html($this->booking_action['label']); ?></span>
