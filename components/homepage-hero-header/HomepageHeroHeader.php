@@ -21,7 +21,7 @@ class HomepageHeroHeader extends ComponentBase
     {
         return [
             'image_position' => 'background',
-            'background' => 'accent',
+            // 'background' => 'accent',
             'show_breadcrumbs' => true,
         ];
     }
