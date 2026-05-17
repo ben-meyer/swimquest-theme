@@ -1,0 +1,34 @@
+# Deploy Theme Files to Staging
+
+## Steps
+
+1. **Build assets**
+   ```bash
+   npm run build
+   ```
+
+2. **Install composer without dev dependencies**
+   ```bash
+   composer install --no-dev
+   ```
+   This excludes `squizlabs/php_codesniffer` and other dev packages. Without `--no-dev`, the phpcs test fixtures get deployed and trigger the hosting provider's malware scanner.
+
+3. **Merge `development` → `main` and push**
+   ```bash
+   git checkout main
+   git merge development --no-edit
+   git push origin main
+   git checkout development
+   ```
+
+4. **Run the deploy script**
+   ```bash
+   bash dev-scripts/deploy.sh staging
+   ```
+   Do NOT modify `deploy.sh` — it must stay in sync with upstream `kite-co-code/gust`.
+
+## Notes
+
+- `main` is the production branch — deploys to staging server
+- `.deployignore` excludes source files but keeps `public/build/` and `assets/theme-config.json`
+- The deploy script runs `wp cache flush` on the remote server automatically
