@@ -10,6 +10,10 @@
     --g-card--border-radius: var(--radius-sm);
     --g-card--transition-duration: 800ms;
     --g-card--transition-ease: var(--transition--ease);
+    --g-card--image-scale: 1;
+    --g-card--image-scale--hover: 1.04;
+    --g-card--image-transition-duration: 600ms;
+    --g-card--image-transition-ease: cubic-bezier(0.4, 0, 0.2, 1);
 
     position: relative;
     display: flex;
@@ -36,7 +40,7 @@
             &:not(.has-embed) {
                 .g-card__image-inner {
                     > * {
-                        transform: scale(1.04);
+                        transform: translate3d(0, 0, 0) scale3d(var(--g-card--image-scale--hover), var(--g-card--image-scale--hover), 1);
                     }
                 }
             }
@@ -108,8 +112,14 @@
             aspect-ratio: 1 / 1;
 
             > * {
+                display: block;
+                width: 100%;
+                height: 100%;
                 object-fit: var(--g-card--image--object-fit, cover);
-                transition: transform var(--g-card--transition-duration) var(--g-card--transition-ease);
+                transform-origin: center center;
+                transform: translate3d(0, 0, 0) scale3d(var(--g-card--image-scale), var(--g-card--image-scale), 1);
+                backface-visibility: hidden;
+                transition: transform var(--g-card--image-transition-duration) var(--g-card--image-transition-ease);
             }
         }
     }

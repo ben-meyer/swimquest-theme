@@ -22,6 +22,7 @@ class CardsCarousel {
 			slidesPerView: 1.2,
 			spaceBetween: 24,
 			speed: 500,
+			roundLengths: true,
 			grabCursor: true,
 			freeMode: {
 				enabled: true,
