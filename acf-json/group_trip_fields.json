@@ -1309,6 +1309,13 @@
                 "operator": "==",
                 "value": "trip"
             }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "events"
+            }
         ]
     ],
     "menu_order": 0,
@@ -1323,5 +1330,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1778252002
+    "modified": 1779128643
 }
