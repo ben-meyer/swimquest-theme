@@ -229,11 +229,43 @@
 
     &.cards--type--carousel {
         --cards--carousel--btn-size: 45px;
+        --cards--carousel--gap: 24px;
+        --cards--carousel--slides: 1.2;
+        --cards--carousel--nav-top: calc(
+            ((100cqw - ((var(--cards--carousel--slides) - 1) * var(--cards--carousel--gap))) / var(--cards--carousel--slides)) / 2
+        );
+
+        @media (min-width: theme('screens.md')) {
+            --cards--carousel--slides: 2;
+        }
+
+        @media (min-width: theme('screens.lg')) {
+            --cards--carousel--slides: 3;
+        }
+
+        &:where(.cards--columns-1) {
+            @media (min-width: theme('screens.md')) {
+                --cards--carousel--slides: 1;
+            }
+        }
+
+        &:where(.cards--columns-2) {
+            @media (min-width: theme('screens.lg')) {
+                --cards--carousel--slides: 2;
+            }
+        }
+
+        &:where(.cards--columns-4) {
+            @media (min-width: theme('screens.lg')) {
+                --cards--carousel--slides: 4;
+            }
+        }
 
         display: block;
 
         .cards__swiper-wrap {
             position: relative;
+            container-type: inline-size;
         }
 
         .cards__swiper {
@@ -264,7 +296,7 @@
         .cards__prev,
         .cards__next {
             position: absolute;
-            top: 50%;
+            top: var(--cards--carousel--nav-top);
             z-index: 10;
             display: flex;
             align-items: center;
