@@ -1,5 +1,5 @@
 .trip-highlights__items {
-    display: grid;
+    display: flex;
     gap: space(24);
     grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
 }
@@ -49,4 +49,12 @@
     .trip-highlights__item-content .trip-highlights__item-description {
         @apply type-small;
     }
+}
+
+.trip-highlights__items {
+    margin-top: space(24);
+}
+
+.trip-highlights__item {
+    max-width: 365px;
 }
