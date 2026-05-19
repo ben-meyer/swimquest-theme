@@ -84,6 +84,7 @@
     pointer-events: auto;
     z-index: 10;
     transition: transform 300ms ease;
+    box-shadow: 0 1px 10px rgb(0 0 0 / 5%);
 
     @media (width >= theme('screens.site-header')) {
         @apply content-width-fluid-lg;
@@ -170,6 +171,7 @@
 
         .site-header__bar {
             background-color: transparent;
+            box-shadow: none;
         }
 
         --link--color: var(--color-white);
@@ -189,6 +191,10 @@
         .site-header__bar_wrapper,
         .site-header__bar {
             background-color: var(--color-background);
+        }
+
+        .site-header__bar {
+            box-shadow: 0 1px 10px rgb(0 0 0 / 5%);
         }
 
         --link--color: var(--color-foreground);
