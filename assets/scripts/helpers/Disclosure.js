@@ -36,7 +36,7 @@ export default class Disclosure {
             animateDuration: 200,
             animateEasing: 'ease',
             collapseOnEscape: true,
-            collapseOnFocusout: false,
+            collapseOnFocusout: this.getBooleanDataAttribute('disclosureCollapseOnFocusout', false),
             collapseAncestorsOnEscape: false,
             collapseOnAncestorCollapse: false,
             focusWithinOnExpand: false,
