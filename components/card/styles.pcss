@@ -168,23 +168,62 @@
         --g-card--box-shadow: none;
         --g-card--box-shadow--hover: none;
         --g-card--border-radius: 0;
+        --g-card--horizontal--mobile-block-gap: space(24);
+        --g-card--horizontal--mobile-content-gap: space(8);
 
         flex-direction: row;
         align-items: flex-start;
         gap: space(24);
 
+        @media (width < theme('screens.md')) {
+            gap: space(16);
+            border-top: 0.5px solid var(--color-bright-blue);
+        }
+
         .g-card__image {
             flex: 0 0 12.5rem; /* 200px */
             width: 12.5rem;
+
+            @media (width < theme('screens.md')) {
+                flex-basis: 100px;
+                width: 100px;
+                max-width: 100px;
+                margin-block: var(--g-card--horizontal--mobile-block-gap);
+            }
         }
 
         .g-card__inner {
             padding: 0;
             padding-top: 0;
+
+            @media (width < theme('screens.md')) {
+                margin-top: var(--g-card--horizontal--mobile-block-gap);
+            }
+        }
+
+        .g-card__header {
+            @media (width < theme('screens.md')) {
+                display: flex;
+                flex-direction: column;
+                gap: var(--g-card--horizontal--mobile-content-gap);
+            }
         }
 
         .g-card__heading {
             @apply type-h5;
+        }
+
+        .g-card__meta,
+        .g-card__content {
+            @media (width < theme('screens.md')) {
+                margin-top: 0;
+            }
+        }
+
+        .g-card__content {
+            @media (width < theme('screens.md')) {
+                @apply type-small;
+            }
         }
     }
 }

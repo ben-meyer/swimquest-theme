@@ -26,4 +26,26 @@
     .g-card__content {
         color: var(--color-navy);
     }
+
+    @media (width < theme('screens.md')) {
+        .cards__inner {
+            padding: space(40) space(20);
+        }
+
+        .cards__header {
+            margin-bottom: space(24);
+        }
+
+        .cards__heading {
+            @apply type-h3;
+        }
+
+        .cards__items {
+            gap: space(24);
+        }
+
+        .g-card:where(.g-card--type--horizontal):where(.g-card--type--story) .g-card__meta {
+            color: var(--color-mid-blue);
+        }
+    }
 }
