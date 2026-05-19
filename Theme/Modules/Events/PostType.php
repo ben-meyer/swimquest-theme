@@ -41,7 +41,7 @@ class PostType
                 'skill_level',
                 'swim_type',
                 'country',
-                'city',
+                'location',
             ],
             'admin_filters' => [
                 'trip_style' => ['taxonomy' => 'trip_style'],
@@ -57,7 +57,7 @@ class PostType
                 ],
                 'title' => ['title' => 'Title'],
                 'country' => ['taxonomy' => 'country'],
-                'city' => ['taxonomy' => 'city'],
+                'location' => ['taxonomy' => 'location'],
                 'trip_style' => ['taxonomy' => 'trip_style'],
                 'swim_type' => ['taxonomy' => 'swim_type'],
                 'skill_level' => ['taxonomy' => 'skill_level'],

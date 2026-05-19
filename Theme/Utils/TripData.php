@@ -82,11 +82,11 @@ class TripData
     {
         $parts = [];
 
-        $cities = \wp_get_post_terms($postId, 'city');
+        $locations = \wp_get_post_terms($postId, 'location');
         $countries = \wp_get_post_terms($postId, 'country');
 
-        if (! empty($cities) && ! \is_wp_error($cities)) {
-            $parts[] = $cities[0]->name;
+        if (! empty($locations) && ! \is_wp_error($locations)) {
+            $parts[] = $locations[0]->name;
         }
 
         if (! empty($countries) && ! \is_wp_error($countries)) {
@@ -100,7 +100,7 @@ class TripData
     {
         $parts = [];
 
-        foreach (['city', 'country'] as $taxonomy) {
+        foreach (['location', 'country'] as $taxonomy) {
             $terms = \wp_get_post_terms($postId, $taxonomy);
 
             if (empty($terms) || \is_wp_error($terms)) {

@@ -67,7 +67,7 @@ Core swim holiday product. Each post represents a trip that may run on multiple 
 - URL: /trip/%postname%/
 - Dashicon: dashicons-palmtree
 - Supports: title, excerpt, thumbnail, revisions, custom-fields, slug
-- Taxonomies: trip_style, skill_level, swim_type, country, city
+- Taxonomies: trip_style, skill_level, swim_type, country, location
 - Editor: Gutenberg disabled — all content is managed via ACF fields and locked template sections
 
 **Header fields (post-level):**
@@ -149,7 +149,7 @@ Swimming events. Mirrors the trip post type in structure and purpose — events 
 - URL: /events/%postname%/
 - Dashicon: dashicons-calendar-alt
 - Supports: title, editor, excerpt, thumbnail, revisions, custom-fields
-- Taxonomies: trip_style, skill_level, swim_type, country, city
+- Taxonomies: trip_style, skill_level, swim_type, country, location
 
 **Archive** (/events/)
 - Template: Listing
@@ -275,20 +275,20 @@ Country-level taxonomy. Flat — country names only. Labeled "Destinations" in n
 
 ---
 
-### city
+### location
 City or location name. Used alongside `country` to form the display location string (e.g. "Mathraki, Greece").
 
 - Post types: trip, events
 - Hierarchical: no
-- Rewrite slug: cities
+- Rewrite slug: locations
 
 **Term fields:**
 - **subheading** (textarea) - Shown on the archive page header
 - **image** (image, return: array) - Shown on the archive page header
 
-**Archive** (/cities/%slug%/) — per-city listing
+**Archive** (/locations/%slug%/) — per-location listing
 - Template: Listing
-- Route: decorate:taxonomy:city
+- Route: decorate:taxonomy:location
 
 ---
 
@@ -534,7 +534,7 @@ Trip hero section registered as `acf/trip-page-header`, restricted to the `trip`
 **Auto-population logic:**
 - Heading defaults to post title
 - Date summary uses `Multiple dates` when more than one departure exists
-- Location is built from `city` + `country`
+- Location is built from `location` + `country`
 - Price is derived from the cheapest `dates` row
 - Ability level and swim type come from taxonomies
 - Image falls back to featured image unless overridden
@@ -745,7 +745,7 @@ Single card renderer used by the `Cards` block and archive grids.
 - **selected** (relationship, post_type: trip, min: 1, max: 6) - Manual trip selection when `card_source` is `selected`
 
 **Archive usage:**
-- `trip_style`, `country`, and `city` taxonomy archives render TripCards with the queried trips (no block fields, populated from the archive query)
+- `trip_style`, `country`, and `location` taxonomy archives render TripCards with the queried trips (no block fields, populated from the archive query)
 
 ### TripCard [Partial]
 
@@ -756,7 +756,7 @@ Single trip card renderer used by `TripCards`. Consumes a `WP_Post` of type `tri
 2. Title (trip name)
 3. Meta list with icons:
    - Dates: single range or "Multiple dates"
-   - Location: `city` + `country` taxonomy terms
+   - Location: `location` + `country` taxonomy terms
    - Skill levels: `skill_level` taxonomy terms, comma-separated
 4. Price: "From" on first line, "£X,XXX" on second line (cheapest departure from `dates` repeater)
 5. CTA button: "View Trip & Book" (`color-context-orange` style)
@@ -992,7 +992,7 @@ Code-side Punch List (separate follow-up work)
   5. getting_there_stages template references missing fields — **[USER TO FIX]** Confirm only one of the two competing ACF groups should be active.
   6. Two competing trip ACF groups — **[USER TO FIX]** acf-json/group_trip_fields.json (root) and Theme/Modules/Trips/acf-json/group_trip_page_sections.json.
   7. Guide role field never registered — **[USER TO FIX]** Register missing ACF field.
-  8. Routes comment wrong — **[FIXED]** Updated comment in `Theme/Routes/routes.php` to `/cities/`.
+  8. Routes comment wrong — **[FIXED]** Updated comment in `Theme/Routes/routes.php` to `/locations/`.
   9. HomepageHeroHeader still has mini variant — **[CONFIRMED]** Kept for now as it is likely intentional for homepage chrome.
                                                                                                                                                                                                           
   Dead code                                                                                                                                                                                               

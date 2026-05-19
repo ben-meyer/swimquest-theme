@@ -86,13 +86,13 @@ class TripCard extends ComponentBase
     }
 
     /**
-     * Build location HTML with linked city and country terms.
+     * Build location HTML with linked location and country terms.
      */
     protected static function buildLocationHtml(int $postId): ?string
     {
         $parts = [];
 
-        foreach (['city', 'country'] as $taxonomy) {
+        foreach (['location', 'country'] as $taxonomy) {
             $terms = \wp_get_post_terms($postId, $taxonomy);
 
             if (empty($terms) || \is_wp_error($terms)) {
