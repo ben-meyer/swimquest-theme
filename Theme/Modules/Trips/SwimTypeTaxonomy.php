@@ -21,7 +21,7 @@ class SwimTypeTaxonomy
 
         \register_extended_taxonomy(
             self::SLUG,
-            ['trip', 'event'],
+            ['trip', 'events'],
             [
                 'hierarchical' => false,
                 'show_admin_column' => true,
