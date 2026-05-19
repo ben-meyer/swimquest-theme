@@ -12,20 +12,21 @@ pull:
 push:
     db: true
     themes: false
-    plugins: false
-    uploads: false
-    db_backup: false
+    plugins: true
+    uploads: true
+    db_backup: true
 
 environments:
     local:
         url: https://swimquest.ddev.site
 
     staging:
-        host: swimquest@185.219.237.7
-        port: 2223
-        path: /home/swimquest/site/public_html
-        url: https://swimquest-4btr8.projectbeta.co.uk
+        host: benmeyer@benmeyer.digital
+        port: 22
+        path: /home/benmeyer/swimquest.benmeyer.digital
+        url: https://swimquest.benmeyer.digital
 
     production:
         host: user@host
         path: /home/.../public_html
+        url: https://swimquest.co.uk
