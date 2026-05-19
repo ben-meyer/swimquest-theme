@@ -50,7 +50,7 @@ if ( ! isset( $table_prefix ) || empty( $table_prefix ) ) {
 ## What it does
 
 - Exports local DB, imports to staging
-- Runs search-replace: `https://swimquest.ddev.site` → `https://swimquest-4btr8.projectbeta.co.uk`
+- Runs search-replace: `https://swimquest.ddev.site` → `https://swimquest.benmeyer.digital`
 - Flushes rewrite rules on remote
 
 ## Notes
@@ -58,3 +58,4 @@ if ( ! isset( $table_prefix ) || empty( $table_prefix ) ) {
 - `uploads: false` in `wp-sync.yml` — media is not synced by default. To sync uploads, temporarily set `uploads: true`, run the sync, then reset to `false`.
 - Must run from the theme directory (`wp-content/themes/gust/`) — that's where `wp-sync.yml` is located.
 - Uses native Homebrew `wp` CLI + Jerome's wp-sync plugin, not `ddev wp`.
+- After DB push, run `ssh benmeyer@benmeyer.digital "chmod -R 755 ~/swimquest.benmeyer.digital/wp-content/"` to fix permissions.

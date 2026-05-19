@@ -25,6 +25,12 @@ See [database.md](database.md) for the wp-config.php prerequisite fix.
 wp sync push staging   # confirm with y
 ```
 
+## 3. Fix permissions
+
+```bash
+ssh benmeyer@benmeyer.digital "chmod -R 755 ~/swimquest.benmeyer.digital/wp-content/"
+```
+
 ## Done
 
-The staging site at `https://swimquest-4btr8.projectbeta.co.uk` will have the latest code and database.
+The staging site at `https://swimquest.benmeyer.digital` will have the latest code and database.
