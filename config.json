@@ -14,9 +14,6 @@
                 "core/column",
                 "core/group",
                 "core/separator",
-                "core/embed",
-                "core/shortcode",
-                "core/html",
                 "core/freeform",
                 "core/block",
                 "core/missing"
