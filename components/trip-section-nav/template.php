@@ -13,11 +13,11 @@
         </ul>
 
         <div class="trip-section-nav__actions">
-            <?php if (! empty($this->enquiry_url)) { ?>
+            <?php if (! empty($this->enquiry_action)) { ?>
                 <?= \Gust\Components\Link::make(
-                    title: __('Make an enquiry', 'gust'),
-                    url: $this->enquiry_url,
-                    target: '_blank',
+                    title: $this->enquiry_action['label'],
+                    url: $this->enquiry_action['url'],
+                    target: $this->enquiry_action['target'] ?? null,
                     classes: ['btn', 'btn--secondary'],
                 ); ?>
             <?php } ?>

@@ -40,10 +40,16 @@
     } */
 }
 
+.trip-dates__item__meta {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: space(8);
+}
+
 .trip-dates__item__label {
     @apply type-h6;
 
-    flex: 1;
     margin: 0;
     opacity: 0.9;
 }
@@ -58,15 +64,24 @@
     font-weight: 600;
 }
 
-.trip-dates__item__cta {
-    --btn--background-color: var(--color-orange);
-    --btn--border-color: var(--color-orange);
-    --btn--color: var(--color-navy);
-    --btn--background-color--hover: var(--color-mid-blue);
-    --btn--border-color--hover: var(--color-mid-blue);
+.trip-dates__item__actions {
+    display: flex;
+    flex-direction: column;
+    gap: space(8);
+    align-items: stretch;
+    flex-shrink: 0;
+}
 
+.trip-dates__item__cta {
     white-space: nowrap;
-    
+
+    &:not(.btn--secondary) {
+        --btn--background-color: var(--color-orange);
+        --btn--border-color: var(--color-orange);
+        --btn--color: var(--color-navy);
+        --btn--background-color--hover: var(--color-mid-blue);
+        --btn--border-color--hover: var(--color-mid-blue);
+    }
 }
 
 .trip-dates__item__cta--sold-out {

@@ -43,7 +43,8 @@
       "Bash(:)",
       "Read(//Users/benmeyer/Development/code/work/swimquest/wordpress/**)",
       "Bash(ddev wp *)",
-      "Read(//private/tmp/**)"
+      "Read(//private/tmp/**)",
+      "mcp__Jam__getScreenshots"
     ]
   },
   "enableAllProjectMcpServers": true,

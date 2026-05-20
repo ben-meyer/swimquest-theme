@@ -131,15 +131,30 @@ class TripData
         return implode(', ', array_map(fn ($term) => $term->name, $terms));
     }
 
-    public static function getPrimaryEnquiryUrl(int $postId): ?string
+    public static function getPrimaryEnquiryAction(int $postId): ?array
     {
-        foreach (self::getDateRows($postId) as $row) {
-            if (! empty($row['enquiry_url'])) {
-                return $row['enquiry_url'];
-            }
+        $rows = self::getDateRows($postId);
+
+        $enquiryRows = array_values(array_filter($rows, fn ($row) => ! empty($row['enquiry_url'])));
+
+        if (empty($enquiryRows)) {
+            return null;
         }
 
-        return null;
+        if (count($rows) !== 1) {
+            return [
+                'label' => __('Make an enquiry', 'gust'),
+                'url' => '#trip-dates',
+                'is_link' => true,
+            ];
+        }
+
+        return [
+            'label' => __('Make an enquiry', 'gust'),
+            'url' => $enquiryRows[0]['enquiry_url'],
+            'target' => '_blank',
+            'is_link' => true,
+        ];
     }
 
     public static function getPrimaryBookingAction(int $postId): ?array
