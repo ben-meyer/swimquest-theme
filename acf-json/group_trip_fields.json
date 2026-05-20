@@ -407,6 +407,24 @@
                     "parent_repeater": "field_trip_dates"
                 },
                 {
+                    "key": "field_trip_dates_enquiry_url",
+                    "label": "Enquiry URL",
+                    "name": "enquiry_url",
+                    "aria-label": "",
+                    "type": "url",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "100",
+                        "class": "",
+                        "id": ""
+                    },
+                    "placeholder": "https:\/\/",
+                    "default_value": "",
+                    "parent_repeater": "field_trip_dates"
+                },
+                {
                     "key": "field_trip_dates_booking_url",
                     "label": "Booking URL",
                     "name": "booking_url",
@@ -423,24 +441,6 @@
                             }
                         ]
                     ],
-                    "wrapper": {
-                        "width": "100",
-                        "class": "",
-                        "id": ""
-                    },
-                    "placeholder": "https:\/\/",
-                    "default_value": "",
-                    "parent_repeater": "field_trip_dates"
-                },
-                {
-                    "key": "field_trip_dates_enquiry_url",
-                    "label": "Enquiry URL",
-                    "name": "enquiry_url",
-                    "aria-label": "",
-                    "type": "url",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
                     "wrapper": {
                         "width": "100",
                         "class": "",
@@ -1330,5 +1330,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1779309494
+    "modified": 1779309801
 }
