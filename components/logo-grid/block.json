@@ -16,7 +16,8 @@
         "align": ["wide", "full"],
         "color": {
             "text": false,
-            "gradients": false
+            "gradients": false, 
+            "background": false
         }
     }
 }
