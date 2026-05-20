@@ -32,7 +32,7 @@
                                         <?= esc_html__('Book Now', 'gust') ?>
                                     </a>
                                 <?php } elseif ($row['is_sold_out']) { ?>
-                                    <button class="trip-dates__item__cta trip-dates__item__cta--sold-out button btn" type="button" disabled>
+                                    <button class="trip-dates__item__cta trip-dates__item__cta--sold-out <?= $row['is_private_group'] ? 'trip-dates__item__cta--private' : '' ?> button btn" type="button" disabled>
                                         <?= esc_html($row['sold_out_label']) ?>
                                     </button>
                                 <?php } ?>

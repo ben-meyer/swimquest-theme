@@ -75,8 +75,9 @@ class TripDates extends ComponentBase
                 'booking_url'   => $booking_url,
                 'enquiry_url'   => $enquiry_url,
                 'is_bookable'   => $status === 'bookable' && ! empty($booking_url),
-                'is_sold_out'   => \in_array($status, ['sold_out', 'sold_out_private'], true),
-                'sold_out_label' => $status === 'sold_out_private' ? __('Sold Out — Private Group', 'gust') : __('Sold Out', 'gust'),
+                'is_sold_out'      => \in_array($status, ['sold_out', 'sold_out_private'], true),
+                'is_private_group' => $status === 'sold_out_private',
+                'sold_out_label'   => $status === 'sold_out_private' ? __('Private Group', 'gust') : __('Sold Out', 'gust'),
             ];
         }, $rows);
 

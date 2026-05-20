@@ -40,6 +40,15 @@ li a.trip-section-nav__link:hover {
     gap: space(12);
 }
 
+.trip-section-nav__booking-btn {
+    --btn--background-color: var(--color-orange);
+    --btn--border-color: var(--color-orange);
+    --btn--color: var(--color-navy);
+    --btn--background-color--hover: var(--color-mid-blue);
+    --btn--border-color--hover: var(--color-mid-blue);
+    --btn--color-hover: var(--color-white);
+}
+
 /* On desktop the nav is sticky at the top — offset anchor targets so headings aren't hidden behind it */
 @media (min-width: 769px) {
     .trip-section-nav ~ [id] {

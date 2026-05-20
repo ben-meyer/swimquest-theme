@@ -393,7 +393,8 @@
                     },
                     "choices": {
                         "bookable": "Bookable",
-                        "sold_out": "Sold Out"
+                        "sold_out": "Sold Out",
+                        "sold_out_private": "Sold Out - Private Group"
                     },
                     "default_value": "bookable",
                     "allow_null": 0,

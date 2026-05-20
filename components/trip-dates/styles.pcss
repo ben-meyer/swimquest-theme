@@ -86,7 +86,7 @@
 .trip-dates__item__cta {
     white-space: nowrap;
 
-    &:not(.btn--secondary) {
+    &:not(.btn--secondary):not(.trip-dates__item__cta--sold-out) {
         --btn--background-color: var(--color-orange);
         --btn--border-color: var(--color-orange);
         --btn--color: var(--color-navy);
@@ -98,13 +98,19 @@
 .trip-dates__item__cta--sold-out {
     --btn--background-color: var(--color-navy);
     --btn--border-color: var(--color-navy);
-    color: rgb(from var(--color-white) r g b / 0.4);
+    --btn--color: rgb(from var(--color-white) r g b / 0.4);
     --btn--background-color--hover: var(--color-navy);
     --btn--border-color--hover: var(--color-navy);
+    --btn--color-hover: var(--btn--color);
     
     white-space: nowrap;
     cursor: default;
     opacity: 1;
+}
+
+.trip-dates__item__cta--private {
+    --btn--color: rgb(from var(--color-white) r g b / 0.8);
+    --btn--color-hover: var(--color-white);
 }
 
 .trip-dates__empty {
