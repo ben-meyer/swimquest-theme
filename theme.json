@@ -4,6 +4,11 @@
     "settings": {
         "appearanceTools": false,
         "blocks": {
+            "core/heading": {
+                "color": {
+                    "background": false
+                }
+            },
             "core/paragraph": {
                 "color": {
                     "background": false

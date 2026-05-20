@@ -1,11 +1,18 @@
-// Strip the Stretchy Heading variation before the block is registered.
-// Using the blocks.registerBlockType filter (not wp.domReady + unregisterBlockVariation)
-// because stretchy variations are defined inline in the block's variations array — they're
-// registered synchronously at block-library load time, which can happen before domReady fires.
-// This filter runs at registration time, so the variation never reaches the inserter.
-wp.hooks.addFilter('blocks.registerBlockType', 'gust/remove-stretchy-heading', (settings, name) => {
+// Strip the Stretchy Heading variation and disable Typography/Colour panels before the block
+// is registered. Using blocks.registerBlockType filter (not wp.domReady) because variations
+// and supports are set synchronously at block-library load time — this filter runs at
+// registration time so changes take effect before the inserter/inspector renders.
+wp.hooks.addFilter('blocks.registerBlockType', 'gust/heading-supports', (settings, name) => {
     if (name === 'core/heading') {
         settings.variations = settings.variations?.filter((v) => v.name !== 'stretchy-heading');
+        return {
+            ...settings,
+            supports: {
+                ...settings.supports,
+                typography: false,
+                color: false,
+            },
+        };
     }
     return settings;
 });
