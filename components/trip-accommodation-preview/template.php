@@ -12,6 +12,7 @@
                         heading: $this->title,
                         el: 'h5',
                         classes: ['trip-accommodation-preview__title'],
+                        link: $this->url ?: null,
                     ); ?>
                 <?php } ?>
 
