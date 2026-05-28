@@ -3,6 +3,7 @@
         <?= \Gust\Components\Heading::make(
             heading: __('Itinerary', 'gust'),
             classes: ['trip-itinerary-preview__heading'],
+            el: 'h4',
         ); ?>
 
         <?php if (! empty($this->items)) { ?>

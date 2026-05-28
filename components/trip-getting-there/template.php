@@ -3,6 +3,7 @@
         <?= \Gust\Components\Heading::make(
             heading: __('Getting there', 'gust'),
             classes: ['trip-getting-there__heading'],
+            el: 'h4',
         ); ?>
 
         <?php

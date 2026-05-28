@@ -2,7 +2,7 @@
     <div class="accordion__inner content-width-sm align-left w-full">
         <?php if (! empty($this->heading)) { ?>
             <div class="accordion__header">
-                <?= \Gust\Components\Heading::make(...$this->heading); ?>
+                <?= \Gust\Components\Heading::make(...$this->heading, el: 'h4'); ?>
             </div>
         <?php } ?>
 

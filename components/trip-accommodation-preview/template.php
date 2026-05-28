@@ -2,6 +2,7 @@
     <div class="trip-accommodation-preview__inner content-width-lg">
         <?= \Gust\Components\Heading::make(
             heading: __('Accommodation', 'gust'),
+            el: 'h4',
             classes: ['trip-accommodation-preview__heading'],
         ); ?>
 

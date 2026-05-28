@@ -3,6 +3,7 @@
         <?= \Gust\Components\Heading::make(
             heading: __('Reviews', 'gust'),
             classes: ['trip-reviews__heading'],
+            el: 'h4',
         ); ?>
 
         <div class="trip-reviews__embed">
