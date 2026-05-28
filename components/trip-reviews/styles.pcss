@@ -1,33 +1,16 @@
 .trip-reviews__embed {
     max-width: 100%;
-    overflow-x: clip;
+    overflow-x: hidden;
     margin-top: space(8);
+
+    /* Break out of the content-grid gutter on mobile so Feefo gets full viewport width */
+    @media (width < theme('screens.sm')) {
+        width: calc(100% + 2 * var(--content-grid--gap));
+        margin-inline: calc(-1 * var(--content-grid--gap));
+    }
 }
 
 .trip-reviews__heading {
     text-transform: capitalize;
-}
-
-.trip-reviews__embed #feefo-service-review-carousel-widgetId,
-.trip-reviews__embed .width-provider-full-width,
-.trip-reviews__embed [data-testid="event-tracker-wrapper"] {
-    max-width: 100%;
-}
-
-.trip-reviews__embed .service-carousel-container.mobile {
-    box-sizing: border-box !important;
-    width: 100% !important;
-    min-width: 0 !important;
-    max-width: 100% !important;
-    margin-right: 0 !important;
-    padding-inline: 0 !important;
-}
-
-.trip-reviews__embed [data-testid="carousel-summary-mobile"],
-.trip-reviews__embed .mobile-service-rating-summary,
-.trip-reviews__embed .mobile-service-rating-badge,
-.trip-reviews__embed .mobile-summary-footer {
-    box-sizing: border-box !important;
-    width: 100% !important;
-    max-width: 100% !important;
+    @apply type-h4;
 }
