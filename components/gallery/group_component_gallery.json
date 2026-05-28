@@ -3,26 +3,6 @@
     "title": "Block - Gallery",
     "fields": [
         {
-            "key": "field_component_gallery_heading",
-            "label": "Heading",
-            "name": "heading",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "maxlength": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
-        },
-        {
             "key": "field_component_gallery_images",
             "label": "Images",
             "name": "images",
