@@ -237,13 +237,13 @@
         },
         {
             "key": "field_trip_header_welcome",
-            "label": "Non-Swimmers",
+            "label": "Non-Swimming Partners",
             "name": "welcome_text",
             "aria-label": "",
             "type": "text",
             "instructions": "Short label shown in the stats bar, e.g. \"Welcome\" or \"Not suitable\".",
             "required": 0,
-            "conditional_logic": false,
+            "conditional_logic": 0,
             "wrapper": {
                 "width": "50",
                 "class": "",
@@ -251,6 +251,7 @@
             },
             "default_value": "",
             "maxlength": "",
+            "allow_in_bindings": 1,
             "placeholder": "",
             "prepend": "",
             "append": ""
@@ -393,8 +394,7 @@
                     },
                     "choices": {
                         "bookable": "Bookable",
-                        "sold_out": "Sold Out",
-                        "sold_out_private": "Sold Out - Private Group"
+                        "sold_out": "Sold Out"
                     },
                     "default_value": "bookable",
                     "allow_null": 0,
@@ -1331,5 +1331,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1779309801
+    "modified": 1779983192
 }
