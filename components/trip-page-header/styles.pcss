@@ -78,6 +78,7 @@
     margin: 0;
     list-style: none;
     flex: 1 1 auto;
+    min-width: 0;
 }
 
 .trip-page-header__summary-item {
@@ -177,12 +178,13 @@
     }
 
     .trip-page-header__content {
-        height: rem(575);
+        min-height: rem(575); /* matches media height minus the top and bottom 
+        gradient heights (605 - 38% of 605 - 19% of 605) */
     }
 
     .trip-page-header__heading {
         max-width: none;
-        text-wrap: nowrap;
+        text-wrap: balance;
     }
 
     .trip-page-header__inner {
