@@ -27,6 +27,19 @@
         color: var(--color-navy);
     }
 
+    &.alignfull {
+        .cards__inner {
+            max-width: unset;
+            margin-inline: unset;
+        }
+    }
+
+    &[class*='cards--columns-'] {
+        .cards__items {
+            margin-bottom: 0;
+        }
+    }
+
     @media (width < theme('screens.md')) {
         .cards__inner {
             padding: space(40) space(20);
