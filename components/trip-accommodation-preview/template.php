@@ -71,6 +71,7 @@
                         title: __('View accommodation', 'gust'),
                         url: $this->url,
                         classes: ['btn', 'btn--secondary'],
+                        target: '_blank',
                     ); ?>
                 <?php } ?>
             </div>
