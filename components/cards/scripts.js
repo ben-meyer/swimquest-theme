@@ -17,11 +17,18 @@ class CardsCarousel {
 
 		const cols = readColumns(this.element);
 
+		const rootFontSize = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+		const cssPxValue = (val) => {
+			val = val.trim();
+			if (val.endsWith('rem')) return parseFloat(val) * rootFontSize;
+			return parseFloat(val);
+		};
+
 		const readSlides = () =>
-    	parseFloat(getComputedStyle(el).getPropertyValue('--cards--carousel--slides')) || 1.2;
+			parseFloat(getComputedStyle(this.element).getPropertyValue('--cards--carousel--slides')) || 1.2;
 
 		const readGap = () =>
-    	parseFloat(getComputedStyle(el).getPropertyValue('--cards--carousel--gap')) || 24;
+			cssPxValue(getComputedStyle(this.element).getPropertyValue('--cards--carousel--gap')) || 24;
 
 		this.swiper = new Swiper(swiperEl, {
 			modules: [Navigation, Keyboard, Mousewheel, FreeMode],
@@ -55,12 +62,12 @@ class CardsCarousel {
 				},
 			},
 			on: {
-        resize: (swiper) => {
-            swiper.params.slidesPerView = readSlides();
-            swiper.params.spaceBetween = readGap();
-            swiper.update();
-        }
-    	}
+				resize: (swiper) => {
+					swiper.params.slidesPerView = readSlides();
+					swiper.params.spaceBetween = readGap();
+					swiper.update();
+				},
+			},
 		});
 
 		this.element.dataset.cardsInitialized = 'true';
