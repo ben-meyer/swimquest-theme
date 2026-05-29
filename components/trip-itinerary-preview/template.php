@@ -44,7 +44,7 @@
             <?= \Gust\Components\Link::make(
                 title: __('View full itinerary', 'gust'),
                 url: $this->url,
-                classes: ['btn', 'btn--secondary'],
+                classes: ['btn', 'btn--theme-2'],
                 target: '_blank',
             ); ?>
         <?php } ?>

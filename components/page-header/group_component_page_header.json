@@ -61,22 +61,6 @@
             "strip_html_tags": 0
         },
         {
-            "key": "field_6081b581ad15c",
-            "label": "Call to Action",
-            "name": "primary_call_to_action",
-            "aria-label": "",
-            "type": "link",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "return_format": "array"
-        },
-        {
             "key": "field_63ef6ef8071ff",
             "label": "Media",
             "name": "",

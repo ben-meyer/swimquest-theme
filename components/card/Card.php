@@ -148,8 +148,14 @@ class Card extends ComponentBase
         }
 
         if (! empty($args['content']['read_more'])) {
+            $read_more_classes = ['btn', 'g-card__find-out-more'];
+
+            if (($args['type'] ?? null) === 'trip-style' || ($args['type'] ?? null) === 'trip-styles') {
+                $read_more_classes[] = 'btn--theme-2';
+            }
+
             $args['content']['read_more'] = array_merge([
-                'classes' => ['btn', 'g-card__find-out-more', 'color-context-white'],
+                'classes' => $read_more_classes,
             ], $args['content']['read_more']);
         }
 

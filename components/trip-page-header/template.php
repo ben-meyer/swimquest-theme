@@ -48,7 +48,7 @@ use Gust\SVG;
                             <?= \Gust\Components\Link::make(
                                 title: $this->cta['label'],
                                 url: $this->cta['url'],
-                                classes: ['btn', 'trip-page-header__cta', 'color-context-orange'],
+                                classes: ['btn', 'trip-page-header__cta'],
                             ); ?>
                         </div>
                     <?php } ?>

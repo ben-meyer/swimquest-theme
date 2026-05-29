@@ -69,17 +69,6 @@
                 </div>
             <?php } ?>
 
-            <?php if (! empty($this->buttons)) { ?>
-                <div class="page-header__buttons">
-                    <ul class="flex-list">
-                        <?php foreach ($this->buttons as $button) { ?>
-                            <li class="flex-list__item">
-                                <?= \Gust\Components\Link::make(...$button); ?>
-                            </li>
-                        <?php } ?>
-                    </ul>
-                </div>
-            <?php } ?>
         </div>
     </div>
 </header>

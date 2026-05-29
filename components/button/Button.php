@@ -6,6 +6,17 @@ use Gust\Component;
 use Gust\ComponentBase;
 
 /**
+ * Usage:
+ *
+ * If no variant is specified, the button will use the primary style by default.
+ * 
+ *   <?php
+ *   echo Button::make(content: 'Book Now', variant: 'primary');
+ *   echo Button::make(content: 'Learn More', variant: 'secondary');
+ *   echo Button::make(content: 'Unavailable', variant: 'inactive');
+ */
+
+/**
  * Button Component
  *
  * Usage:
@@ -27,6 +38,7 @@ class Button extends ComponentBase
         array $classes = [],
         bool $screen_reader_text = false,
         string $type = 'button',
+        string $variant = 'primary',
         ...$others
     ): ?static {
         return static::createFromArgs(static::mergeArgs(get_defined_vars()));
@@ -48,6 +60,15 @@ class Button extends ComponentBase
         }
 
         $args['attributes']['type'] = $args['type'];
+
+        $variant_classes = [
+            'secondary' => 'btn--theme-2',
+            'inactive' => 'btn--inactive',
+            'ghost' => 'btn--ghost',
+        ];
+        if (isset($variant_classes[$args['variant']])) {
+            $args['classes'][] = $variant_classes[$args['variant']];
+        }
 
         return $args;
     }

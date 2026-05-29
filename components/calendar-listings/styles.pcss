@@ -51,11 +51,7 @@
 }
 
 .calendar-listings__item-location {
-    @media (width < theme('screens.md')) {
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
+    /* Allow location to wrap on mobile rather than truncate */
 }
 
 .calendar-listings__item-title {
@@ -73,6 +69,15 @@
         &:hover {
             text-decoration: underline;
         }
+    }
+}
+
+.calendar-listings__btn {
+    justify-content: center;
+    white-space: nowrap;
+
+    @media (width >= theme('screens.md')) {
+        width: rem(120);
     }
 }
 

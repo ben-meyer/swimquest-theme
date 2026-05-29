@@ -112,7 +112,6 @@
         grid-template-columns: 1fr;
         justify-content: flex-start;
 
-        .page-header__buttons .flex-list,
         .page-header__labels .flex-list {
             justify-content: flex-start;
         }
@@ -195,17 +194,6 @@
 
         .flex-list {
             justify-content: center;
-        }
-    }
-
-    :where(.page-header__buttons) {
-        --grid--row-gap: space(4);
-        --grid--column-gap: space(4);
-
-        margin-top: var(--page-header--content--spacing, var(--space-base));
-
-        .flex-list {
-            justify-content: var(--page-header--grid-alignment-x);
         }
     }
 

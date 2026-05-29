@@ -87,7 +87,7 @@
 .trip-dates__item__cta {
     white-space: nowrap;
 
-    &:not(.btn--secondary):not(.trip-dates__item__cta--sold-out) {
+    &:not(.btn--theme-2):not(.trip-dates__item__cta--sold-out) {
         --btn--background-color: var(--color-orange);
         --btn--border-color: var(--color-orange);
         --btn--color: var(--color-navy);
@@ -103,10 +103,19 @@
     --btn--background-color--hover: var(--color-navy);
     --btn--border-color--hover: var(--color-navy);
     --btn--color-hover: var(--btn--color);
-    
+
+    /* Align with Book Now width — Private Group naturally wider, which is fine */
+    min-width: rem(100);
+    justify-content: center;
     white-space: nowrap;
     cursor: default;
     opacity: 1;
+}
+
+.trip-dates__item__cta:not(.btn--theme-2):not(.trip-dates__item__cta--sold-out):not(.trip-dates__item__cta--private) {
+    /* Book Now — set the same floor so it aligns with Sold Out across rows */
+    min-width: rem(100);
+    justify-content: center;
 }
 
 .trip-dates__empty {

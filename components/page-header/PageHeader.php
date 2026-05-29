@@ -154,10 +154,6 @@ class PageHeader extends ComponentBase
             $args['heading'] = $heading;
         }
 
-        if (! empty($args['primary_call_to_action'])) {
-            $args['buttons'][] = array_merge($args['primary_call_to_action'], ['classes' => ['btn']]);
-        }
-
         if (isset($args['is_preview']) && $args['is_preview']) {
             if (empty($args['heading'])) {
                 $args['heading'] = _x('Add title', 'Placeholder for page header title', 'gust');

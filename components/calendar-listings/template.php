@@ -35,7 +35,7 @@ use Theme\Utils\TripData;
                                 <span class="calendar-listings__item-icon">
                                     <?= \Gust\SVG::get('icons/location.svg'); ?>
                                 </span>
-                                <?= $locationHtml; ?>
+                                <span><?= $locationHtml; ?></span>
                             </div>
                         <?php } ?>
 
@@ -53,9 +53,11 @@ use Theme\Utils\TripData;
                                     classes: ['btn', 'btn--sm', 'calendar-listings__btn', 'color-context-orange'],
                                 ); ?>
                             <?php } else { ?>
-                                <span class="calendar-listings__status">
-                                    <?= esc_html($dateRow['status_label']); ?>
-                                </span>
+                                <?= \Gust\Components\Link::make(
+                                    title: __('View Trip', 'gust'),
+                                    url: get_permalink($post),
+                                    classes: ['btn', 'btn--sm', 'btn--theme-2', 'calendar-listings__btn'],
+                                ); ?>
                             <?php } ?>
                         </div>
                     </div>

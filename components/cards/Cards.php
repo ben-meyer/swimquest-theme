@@ -108,8 +108,12 @@ class Cards extends ComponentBase
             $args['columns'] = '2';
         }
 
+        if (empty($args['card_type']) && ($args['card_source'] ?? null) === 'trip_styles') {
+            $args['card_type'] = 'trip-style';
+        }
+
         if (! empty($args['button'])) {
-            $args['button']['classes'] = ['btn', 'color-context-white'];
+            $args['button']['classes'] = ['btn'];
         }
 
         if (! empty($args['items'])) {

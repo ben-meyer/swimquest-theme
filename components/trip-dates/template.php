@@ -22,7 +22,7 @@
                         <?php if ($row['enquiry_url'] || $row['is_bookable'] || $row['is_sold_out']) { ?>
                             <div class="trip-dates__item__actions">
                                 <?php if ($row['enquiry_url']) { ?>
-                                    <a href="<?= esc_url($row['enquiry_url']) ?>" class="trip-dates__item__cta button btn btn--secondary" target="_blank" rel="noopener">
+                                    <a href="<?= esc_url($row['enquiry_url']) ?>" class="trip-dates__item__cta button btn btn--theme-2" target="_blank" rel="noopener">
                                         <?= esc_html__('Enquire', 'gust') ?>
                                     </a>
                                 <?php } ?>

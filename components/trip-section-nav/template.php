@@ -18,7 +18,7 @@
                     title: $this->enquiry_action['label'],
                     url: $this->enquiry_action['url'],
                     target: $this->enquiry_action['target'] ?? null,
-                    classes: ['btn', 'btn--secondary'],
+                    classes: ['btn', 'btn--theme-2'],
                 ); ?>
             <?php } ?>
 
