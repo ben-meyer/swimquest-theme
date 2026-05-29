@@ -1,6 +1,10 @@
 .trip-card {
     --trip-card--transition-duration: 800ms;
     --trip-card--transition-ease: var(--transition--ease);
+    --trip-card--image-scale: 1;
+    --trip-card--image-scale--hover: 1.04;
+    --trip-card--image-transition-duration: 600ms;
+    --trip-card--image-transition-ease: cubic-bezier(0.4, 0, 0.2, 1);
 
     position: relative;
     display: flex;
@@ -12,7 +16,7 @@
         &:hover,
         &:focus-visible {
             .trip-card__image-inner > * {
-                transform: scale(1.04);
+                transform: translate3d(0, 0, 0) scale3d(var(--trip-card--image-scale--hover), var(--trip-card--image-scale--hover), 1);
             }
         }
     }
@@ -26,8 +30,14 @@
             aspect-ratio: 1 / 1;
 
             > * {
+                display: block;
+                width: 100%;
+                height: 100%;
                 object-fit: cover;
-                transition: transform var(--trip-card--transition-duration) var(--trip-card--transition-ease);
+                transform-origin: center center;
+                transform: translate3d(0, 0, 0) scale3d(var(--trip-card--image-scale), var(--trip-card--image-scale), 1);
+                backface-visibility: hidden;
+                transition: transform var(--trip-card--image-transition-duration) var(--trip-card--image-transition-ease);
             }
         }
     }
@@ -45,6 +55,9 @@
 
         margin-top: 0;
         margin-bottom: 0;
+        a:hover {
+            text-decoration: none;
+        }
 
         a {
             &::before {
