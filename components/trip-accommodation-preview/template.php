@@ -2,6 +2,7 @@
     <div class="trip-accommodation-preview__inner content-width-lg">
         <?= \Gust\Components\Heading::make(
             heading: __('Accommodation', 'gust'),
+            el: 'h4',
             classes: ['trip-accommodation-preview__heading'],
         ); ?>
 
@@ -12,6 +13,7 @@
                         heading: $this->title,
                         el: 'h5',
                         classes: ['trip-accommodation-preview__title'],
+                        link: $this->url ?: null,
                     ); ?>
                 <?php } ?>
 
@@ -69,6 +71,7 @@
                         title: __('View accommodation', 'gust'),
                         url: $this->url,
                         classes: ['btn', 'btn--theme-2'],
+                        target: '_blank',
                     ); ?>
                 <?php } ?>
             </div>

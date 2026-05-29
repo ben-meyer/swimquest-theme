@@ -1,7 +1,8 @@
 .trip-accommodation-preview__summary {
-    padding: space(32);
+    padding: spaceFluid(24, 32);
     border: 1px solid var(--color-mid-blue);
     margin-bottom: 0;
+    margin-top: spaceFluid(24, 32);
 }
 
 .trip-accommodation-preview__header {
@@ -13,6 +14,7 @@
 
 .trip-accommodation-preview__heading {
     text-transform: capitalize;
+    @apply type-h4;
 }
 
 .trip-accommodation-preview__tags {
@@ -49,6 +51,7 @@
 
 .trip-accommodation-preview__rooms {
     margin-top: space(32);
+    width: 100%;
 }
 
 .trip-accommodation-preview__rooms-copy {

@@ -7,12 +7,13 @@
 
     :where(.accordion__header) {
         @apply margin-trim;
-        margin-bottom: var(--section--header--margin-bottom);
+        margin-bottom: space(32);
     }
 
     :where(.accordion__heading) {
         max-width: var(--heading--max-width);
         text-align: start;
+        text-transform: capitalize;
     }
 
     :where(.accordion__items) {
@@ -39,7 +40,7 @@
             width: 100%;
             align-items: center;
             justify-content: space-between;
-            padding: var(--accordion--item--padding-y) space(16);
+            padding: var(--accordion--item--padding-y) spaceFluid(16, 24);
             margin: 0;
             background: none;
             color: var(--color-foreground);
@@ -116,9 +117,13 @@
                 @apply margin-trim;
 
                 background-color: var(--color-neutral);
-                padding: 0 space(16) var(--accordion--item--panel--padding-y);
+                padding: 0 spaceFluid(16, 24) var(--accordion--item--panel--padding-y);
 
             }
+        }
+
+        :where(.accordion__item__panel) p {
+            @apply type-small;
         }
     }
 }

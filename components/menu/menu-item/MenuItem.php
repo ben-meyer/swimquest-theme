@@ -87,6 +87,7 @@ class MenuItem extends ComponentBase
                 'hidden' => true,
                 'aria-hidden' => 'true',
                 'data-disclosure' => '',
+                'data-disclosure-collapse-on-focusout' => '',
             ];
 
             $args['button'] = [

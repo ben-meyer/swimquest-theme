@@ -10,6 +10,8 @@ site_main_open(classes: $site_main_classes, object: $object);
 
 if ($object instanceof \WP_Post && $object->post_type === 'trip') {
     echo \Gust\Components\TripSingle::make(object: $object);
+} elseif ($object instanceof \WP_Post && $object->post_type === 'events') {
+    echo \Gust\Components\EventSingle::make(object: $object);
 } else {
     if (! \Gust\Helpers::hasPageHeaderBlock()) {
         echo \Gust\Components\PageHeader::make(object: $object);

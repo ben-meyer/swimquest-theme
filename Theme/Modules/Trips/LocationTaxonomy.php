@@ -2,9 +2,9 @@
 
 namespace Theme\Modules\Trips;
 
-class CityTaxonomy
+class LocationTaxonomy
 {
-    protected const SLUG = 'city';
+    protected const SLUG = 'location';
 
     public static function init(): void
     {
@@ -21,18 +21,18 @@ class CityTaxonomy
 
         \register_extended_taxonomy(
             self::SLUG,
-            ['trip', 'event'],
+            ['trip', 'events'],
             [
                 'hierarchical' => false,
                 'show_admin_column' => true,
                 'show_in_rest' => true,
                 'meta_box' => 'simple',
-                'rewrite' => ['slug' => 'cities'],
+                'rewrite' => ['slug' => 'locations'],
             ],
             [
-                'singular' => __('City', 'gust'),
-                'plural' => __('Cities', 'gust'),
-                'slug' => 'cities',
+                'singular' => __('Location', 'gust'),
+                'plural' => __('Locations', 'gust'),
+                'slug' => 'locations',
             ]
         );
     }

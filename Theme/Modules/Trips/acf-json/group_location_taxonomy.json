@@ -1,14 +1,14 @@
 {
-    "key": "group_city_taxonomy",
-    "title": "City",
+    "key": "group_location_taxonomy",
+    "title": "Location",
     "fields": [
         {
-            "key": "field_city_subheading",
+            "key": "field_location_subheading",
             "label": "Subheading",
             "name": "subheading",
             "aria-label": "",
             "type": "textarea",
-            "instructions": "Short description shown below the title on the City's archive page.",
+            "instructions": "Short description shown below the title on the Location's archive page.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -22,12 +22,12 @@
             "new_lines": "br"
         },
         {
-            "key": "field_city_image",
+            "key": "field_location_image",
             "label": "Image",
             "name": "image",
             "aria-label": "",
             "type": "image",
-            "instructions": "Featured image shown on the Cities' index tile and archive page header.",
+            "instructions": "Featured image shown on the Locations' index tile and archive page header.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -52,7 +52,7 @@
             {
                 "param": "taxonomy",
                 "operator": "==",
-                "value": "city"
+                "value": "location"
             }
         ]
     ],

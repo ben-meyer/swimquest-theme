@@ -102,7 +102,7 @@ class TripPageHeader extends ComponentBase
             ],
             [
                 'value' => $nonSwimmersText,
-                'label' => __('Non-swimmers', 'gust'),
+                'label' => __('Non-swimming Partners', 'gust'),
             ],
             [
                 'value' => $techniqueCoachingText,

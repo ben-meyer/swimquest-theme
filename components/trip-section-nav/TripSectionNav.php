@@ -29,7 +29,7 @@ class TripSectionNav extends ComponentBase
         $postId = ! empty($args['post_id']) ? (int) $args['post_id'] : \get_the_ID();
 
         $args['items'] = TripData::getSectionMap($postId);
-        $args['enquiry_url'] = TripData::getPrimaryEnquiryUrl($postId);
+        $args['enquiry_action'] = TripData::getPrimaryEnquiryAction($postId);
         $args['booking_action'] = TripData::getPrimaryBookingAction($postId);
 
         return $args;

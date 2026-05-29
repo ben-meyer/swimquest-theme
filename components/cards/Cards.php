@@ -30,6 +30,7 @@ class Cards extends ComponentBase
      *
      * @param  string|null  $card_background_color  Programmatic-only: Background color for cards.
      * @param  array|null  $tag  Programmatic-only: Tags to filter by.
+     * @param  string|null  $default_read_more  Programmatic-only: Default read more text.
      * @return static|null Returns null if component should not render.
      */
     public static function make(
@@ -41,6 +42,7 @@ class Cards extends ComponentBase
         ?string $columns = null,
         ?string $card_type = null,
         ?bool $slider_on_mobile = null,
+        ?string $default_read_more = null,
         ...$others
     ): ?static {
         return static::createFromArgs(static::mergeArgs(get_defined_vars()));
@@ -150,7 +152,7 @@ class Cards extends ComponentBase
         $cardSource = $args['card_source'] ?? null;
         $cardType = $args['card_type'] ?? null;
         if ($cardSource === 'trip_styles' || $cardSource === 'destinations' || $cardType === 'trip-style') {
-            $default_read_more = 'Find Your Trip';
+            $default_read_more = $args['default_read_more'] ?? 'Find Your Trip';
         }
 
         if (! empty($args['items'])) {

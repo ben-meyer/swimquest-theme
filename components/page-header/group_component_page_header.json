@@ -45,7 +45,7 @@
             "name": "subheading",
             "aria-label": "",
             "type": "wysiwyg",
-            "instructions": "Optional",
+            "instructions": "Optional. Note: this field is hidden when a hero image is used — it only displays on pages without a hero.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {

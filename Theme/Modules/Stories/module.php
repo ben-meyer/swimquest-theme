@@ -10,6 +10,7 @@ use Gust\WordPress\PageObject;
 
 class StoriesModule
 {
+
     public static function init(): void
     {
         PostType::init();
@@ -19,6 +20,18 @@ class StoriesModule
             ->withSlot('template-content', [static::class, 'renderArchive']);
 
         \add_filter('acf/settings/load_json', [__CLASS__, 'loadACFJson']);
+        \add_action('pre_get_posts', [__CLASS__, 'setArchivePostsPerPage']);
+    }
+
+    public static function setArchivePostsPerPage(\WP_Query $query): void
+    {
+        if (\is_admin() || ! $query->is_main_query()) {
+            return;
+        }
+
+        if ($query->is_post_type_archive('story')) {
+            $query->set('posts_per_page', 12);
+        }
     }
 
     public static function renderArchive(): string

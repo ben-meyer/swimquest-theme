@@ -158,29 +158,6 @@
             },
             "placement": "top",
             "endpoint": 0
-        },
-        {
-            "key": "field_61a10d5b320d5",
-            "label": "Image aspect ratio",
-            "name": "image_aspect_ratio",
-            "aria-label": "",
-            "type": "button_group",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "choices": {
-                "default": "Default",
-                "square": "Square"
-            },
-            "allow_null": 0,
-            "default_value": "",
-            "layout": "horizontal",
-            "return_format": "value"
         }
     ],
     "location": [

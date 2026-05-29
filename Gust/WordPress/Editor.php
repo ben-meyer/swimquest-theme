@@ -94,6 +94,11 @@ class Editor
     {
         $editorSettings['enableOpenverseMediaCategory'] = false;
 
+        // Remove the Attributes (block bindings) panel for blocks where it's not useful to clients.
+        foreach (['core/paragraph', 'core/heading'] as $block) {
+            unset($editorSettings['__experimentalBlockBindingsSupportedAttributes'][$block]);
+        }
+
         return $editorSettings;
     }
 }

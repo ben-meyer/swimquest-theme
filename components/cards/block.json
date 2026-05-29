@@ -15,7 +15,8 @@
         "align": false,
         "color": {
             "text": false,
-            "gradients": false
+            "gradients": false,
+            "background": false
         }
     }
 }

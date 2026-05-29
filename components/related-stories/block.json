@@ -1,0 +1,22 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 2,
+    "name": "acf/related-stories",
+    "title": "Related Stories",
+    "description": "Show up to two related stories side by side.",
+    "category": "theme-blocks",
+    "icon": "format-aside",
+    "acf": {
+        "mode": "auto",
+        "renderCallback": "Gust\\Components\\RelatedStories::renderBlock"
+    },
+    "supports": {
+        "anchor": true,
+        "align": false,
+        "color": {
+            "text": false,
+            "gradients": false,
+            "background": false
+        }
+    }
+}

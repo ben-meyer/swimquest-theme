@@ -46,9 +46,13 @@ class SiteMain extends ComponentBase
             $args['inner_el'] = 'article';
         }
 
-        // Default id
+        // Default id (skip-link target) and tabindex so the skip link
+        // actually moves keyboard focus into the main region.
         if (empty($args['attributes']['id'])) {
             $args['attributes']['id'] = 'main';
+        }
+        if (! isset($args['attributes']['tabindex'])) {
+            $args['attributes']['tabindex'] = '-1';
         }
 
         static::$openArgs = $args;

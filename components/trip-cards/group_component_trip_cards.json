@@ -27,14 +27,6 @@
             "media_upload": 0
         },
         {
-            "key": "field_trip_cards_button",
-            "label": "Button",
-            "name": "button",
-            "type": "link",
-            "required": 0,
-            "return_format": "array"
-        },
-        {
             "key": "field_trip_cards_tab_cards",
             "label": "Cards",
             "name": "",

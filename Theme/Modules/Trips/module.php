@@ -11,7 +11,7 @@ class TripsModule
         SkillLevelTaxonomy::init();
         SwimTypeTaxonomy::init();
         CountryTaxonomy::init();
-        CityTaxonomy::init();
+        LocationTaxonomy::init();
 
         \add_filter('acf/settings/load_json', [__CLASS__, 'loadACFJson']);
     }

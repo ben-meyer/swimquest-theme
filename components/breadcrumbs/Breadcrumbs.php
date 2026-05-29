@@ -28,4 +28,9 @@ class Breadcrumbs extends ComponentBase
     ): ?static {
         return static::createFromArgs(static::mergeArgs(get_defined_vars()));
     }
+
+    protected static function validate(array $args): bool
+    {
+        return function_exists('yoast_breadcrumb');
+    }
 }

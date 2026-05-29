@@ -1,8 +1,14 @@
 .trip-highlights__items {
     display: grid;
     gap: space(24);
-    grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(14rem, 365px));
+    margin-top: space(24);
+
+    @media (min-width: theme('screens.md')) {
+        grid-template-columns: repeat(4, 1fr);
+    }
 }
+
 
 .trip-highlights__item-image-inner {
     aspect-ratio: 1 / 1;

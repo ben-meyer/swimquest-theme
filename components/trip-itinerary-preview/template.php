@@ -3,6 +3,7 @@
         <?= \Gust\Components\Heading::make(
             heading: __('Itinerary', 'gust'),
             classes: ['trip-itinerary-preview__heading'],
+            el: 'h4',
         ); ?>
 
         <?php if (! empty($this->items)) { ?>
@@ -44,6 +45,7 @@
                 title: __('View full itinerary', 'gust'),
                 url: $this->url,
                 classes: ['btn', 'btn--theme-2'],
+                target: '_blank',
             ); ?>
         <?php } ?>
     </div>

@@ -1,3 +1,16 @@
 .trip-reviews__embed {
+    max-width: 100%;
+    overflow-x: hidden;
     margin-top: space(8);
+
+    /* Break out of the content-grid gutter on mobile so Feefo gets full viewport width */
+    @media (width < theme('screens.sm')) {
+        width: calc(100% + 2 * var(--content-grid--gap));
+        margin-inline: calc(-1 * var(--content-grid--gap));
+    }
+}
+
+.trip-reviews__heading {
+    text-transform: capitalize;
+    @apply type-h4;
 }

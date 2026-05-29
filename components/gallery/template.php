@@ -15,11 +15,6 @@ $image_count = count($this->images ?? []);
 <sq-gallery class="<?= classes('wp-block', 'alignfull', $this->classes) ?>"<?= Helpers::buildAttributes($this->attributes); ?>>
     <!-- Gallery content -->
     <div class="gallery__inner content-width-fluid-lg">
-        <?php if (! empty($this->heading)) { ?>
-            <div class="gallery__header">
-                <?= Heading::make(...$this->heading); ?>
-            </div>
-        <?php } ?>
 
         <?php if (! empty($this->images)) { ?>
             <div class="gallery__swiper-wrap">

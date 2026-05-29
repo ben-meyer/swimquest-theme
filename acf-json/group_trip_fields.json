@@ -11,9 +11,14 @@
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
-            "wrapper": {"width": "", "class": "", "id": ""},
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "placement": "top",
-            "endpoint": 0
+            "endpoint": 0,
+            "selected": 0
         },
         {
             "key": "field_trip_header_heading",
@@ -24,7 +29,11 @@
             "instructions": "Optional override for the trip title.",
             "required": 0,
             "conditional_logic": false,
-            "wrapper": {"width": "", "class": "", "id": ""},
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "default_value": "",
             "maxlength": "",
             "placeholder": "",
@@ -40,7 +49,11 @@
             "instructions": "Summary paragraph shown in the trip hero.",
             "required": 0,
             "conditional_logic": false,
-            "wrapper": {"width": "", "class": "", "id": ""},
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "rows": 4,
             "new_lines": "br",
             "default_value": "",
@@ -56,7 +69,11 @@
             "instructions": "Optional override for the featured image.",
             "required": 0,
             "conditional_logic": false,
-            "wrapper": {"width": "", "class": "", "id": ""},
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "return_format": "array",
             "preview_size": "medium",
             "library": "all",
@@ -77,9 +94,14 @@
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
-            "wrapper": {"width": "", "class": "", "id": ""},
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "placement": "top",
-            "endpoint": 0
+            "endpoint": 0,
+            "selected": 0
         },
         {
             "key": "field_trip_header_duration_nights",
@@ -90,7 +112,11 @@
             "instructions": "",
             "required": 0,
             "conditional_logic": false,
-            "wrapper": {"width": "", "class": "", "id": ""},
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "min": 0,
             "step": 1,
             "default_value": "",
@@ -108,7 +134,11 @@
             "instructions": "",
             "required": 0,
             "conditional_logic": false,
-            "wrapper": {"width": "50", "class": "", "id": ""},
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
             "step": 0.1,
             "default_value": "",
             "min": "",
@@ -126,7 +156,11 @@
             "instructions": "",
             "required": 0,
             "conditional_logic": false,
-            "wrapper": {"width": "50", "class": "", "id": ""},
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
             "step": 0.1,
             "default_value": "",
             "min": "",
@@ -144,7 +178,11 @@
             "instructions": "",
             "required": 0,
             "conditional_logic": false,
-            "wrapper": {"width": "50", "class": "", "id": ""},
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
             "step": 0.1,
             "default_value": "",
             "min": "",
@@ -162,7 +200,11 @@
             "instructions": "",
             "required": 0,
             "conditional_logic": false,
-            "wrapper": {"width": "50", "class": "", "id": ""},
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
             "step": 0.1,
             "default_value": "",
             "min": "",
@@ -180,7 +222,11 @@
             "instructions": "",
             "required": 0,
             "conditional_logic": false,
-            "wrapper": {"width": "", "class": "", "id": ""},
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "min": 0,
             "step": 1,
             "default_value": "",
@@ -191,16 +237,21 @@
         },
         {
             "key": "field_trip_header_welcome",
-            "label": "Non-Swimmers",
+            "label": "Non-Swimming Partners",
             "name": "welcome_text",
             "aria-label": "",
             "type": "text",
             "instructions": "Short label shown in the stats bar, e.g. \"Welcome\" or \"Not suitable\".",
             "required": 0,
-            "conditional_logic": false,
-            "wrapper": {"width": "50", "class": "", "id": ""},
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
             "default_value": "",
             "maxlength": "",
+            "allow_in_bindings": 1,
             "placeholder": "",
             "prepend": "",
             "append": ""
@@ -214,7 +265,11 @@
             "instructions": "Short label shown in the stats bar, e.g. \"Included\" or \"Optional\".",
             "required": 0,
             "conditional_logic": false,
-            "wrapper": {"width": "50", "class": "", "id": ""},
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
             "default_value": "",
             "maxlength": "",
             "placeholder": "",
@@ -230,9 +285,14 @@
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
-            "wrapper": {"width": "", "class": "", "id": ""},
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "placement": "top",
-            "endpoint": 0
+            "endpoint": 0,
+            "selected": 0
         },
         {
             "key": "field_trip_dates",
@@ -243,7 +303,11 @@
             "instructions": "Add one row per departure window.",
             "required": 0,
             "conditional_logic": 0,
-            "wrapper": {"width": "", "class": "", "id": ""},
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "layout": "block",
             "button_label": "Add Departure",
             "min": 0,
@@ -260,8 +324,12 @@
                     "instructions": "",
                     "required": 1,
                     "conditional_logic": 0,
-                    "wrapper": {"width": "25", "class": "", "id": ""},
-                    "display_format": "d/m/Y",
+                    "wrapper": {
+                        "width": "25",
+                        "class": "",
+                        "id": ""
+                    },
+                    "display_format": "d\/m\/Y",
                     "return_format": "Y-m-d",
                     "first_day": 1,
                     "default_to_current_date": 0,
@@ -276,8 +344,12 @@
                     "instructions": "",
                     "required": 1,
                     "conditional_logic": 0,
-                    "wrapper": {"width": "25", "class": "", "id": ""},
-                    "display_format": "d/m/Y",
+                    "wrapper": {
+                        "width": "25",
+                        "class": "",
+                        "id": ""
+                    },
+                    "display_format": "d\/m\/Y",
                     "return_format": "Y-m-d",
                     "first_day": 1,
                     "default_to_current_date": 0,
@@ -292,7 +364,11 @@
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
-                    "wrapper": {"width": "25", "class": "", "id": ""},
+                    "wrapper": {
+                        "width": "25",
+                        "class": "",
+                        "id": ""
+                    },
                     "min": 0,
                     "step": 0.01,
                     "default_value": "",
@@ -311,10 +387,15 @@
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
-                    "wrapper": {"width": "25", "class": "", "id": ""},
+                    "wrapper": {
+                        "width": "25",
+                        "class": "",
+                        "id": ""
+                    },
                     "choices": {
                         "bookable": "Bookable",
-                        "sold_out": "Sold Out"
+                        "sold_out": "Sold Out",
+                        "sold_out_private": "Sold Out - Private Group"
                     },
                     "default_value": "bookable",
                     "allow_null": 0,
@@ -325,6 +406,24 @@
                     "placeholder": "",
                     "create_options": 0,
                     "save_options": 0,
+                    "parent_repeater": "field_trip_dates"
+                },
+                {
+                    "key": "field_trip_dates_enquiry_url",
+                    "label": "Enquiry URL",
+                    "name": "enquiry_url",
+                    "aria-label": "",
+                    "type": "url",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "100",
+                        "class": "",
+                        "id": ""
+                    },
+                    "placeholder": "https:\/\/",
+                    "default_value": "",
                     "parent_repeater": "field_trip_dates"
                 },
                 {
@@ -344,22 +443,12 @@
                             }
                         ]
                     ],
-                    "wrapper": {"width": "100", "class": "", "id": ""},
-                    "placeholder": "https://",
-                    "default_value": "",
-                    "parent_repeater": "field_trip_dates"
-                },
-                {
-                    "key": "field_trip_dates_enquiry_url",
-                    "label": "Enquiry URL",
-                    "name": "enquiry_url",
-                    "aria-label": "",
-                    "type": "url",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {"width": "100", "class": "", "id": ""},
-                    "placeholder": "https://",
+                    "wrapper": {
+                        "width": "100",
+                        "class": "",
+                        "id": ""
+                    },
+                    "placeholder": "https:\/\/",
                     "default_value": "",
                     "parent_repeater": "field_trip_dates"
                 }
@@ -374,9 +463,14 @@
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
-            "wrapper": {"width": "", "class": "", "id": ""},
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "placement": "top",
-            "endpoint": 0
+            "endpoint": 0,
+            "selected": 0
         },
         {
             "key": "field_trip_intro_lead",
@@ -387,7 +481,11 @@
             "instructions": "Large intro paragraph shown above the highlights.",
             "required": 0,
             "conditional_logic": false,
-            "wrapper": {"width": "", "class": "", "id": ""},
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "rows": 3,
             "new_lines": "br",
             "default_value": "",
@@ -403,7 +501,11 @@
             "instructions": "Standard intro paragraph shown below the lead.",
             "required": 0,
             "conditional_logic": false,
-            "wrapper": {"width": "", "class": "", "id": ""},
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "rows": 5,
             "new_lines": "br",
             "default_value": "",
@@ -419,14 +521,24 @@
             "instructions": "Gallery shown above the highlights, after the intro paragraphs.",
             "required": 0,
             "conditional_logic": 0,
-            "wrapper": {"width": "", "class": "", "id": ""},
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "min": "",
             "max": "",
             "insert": "append",
             "library": "all",
             "mime_types": "",
             "preview_size": "medium",
-            "return_format": "array"
+            "return_format": "array",
+            "min_width": 0,
+            "min_height": 0,
+            "min_size": 0,
+            "max_width": 0,
+            "max_height": 0,
+            "max_size": 0
         },
         {
             "key": "field_trip_mid_gallery",
@@ -437,14 +549,24 @@
             "instructions": "Gallery shown below the itinerary preview block.",
             "required": 0,
             "conditional_logic": 0,
-            "wrapper": {"width": "", "class": "", "id": ""},
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "min": "",
             "max": "",
             "insert": "append",
             "library": "all",
             "mime_types": "",
             "preview_size": "medium",
-            "return_format": "array"
+            "return_format": "array",
+            "min_width": 0,
+            "min_height": 0,
+            "min_size": 0,
+            "max_width": 0,
+            "max_height": 0,
+            "max_size": 0
         },
         {
             "key": "field_trip_tab_highlights",
@@ -455,9 +577,14 @@
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
-            "wrapper": {"width": "", "class": "", "id": ""},
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "placement": "top",
-            "endpoint": 0
+            "endpoint": 0,
+            "selected": 0
         },
         {
             "key": "field_trip_highlights",
@@ -468,7 +595,11 @@
             "instructions": "Up to 4 highlight cards. Images should work with a central square crop.",
             "required": 0,
             "conditional_logic": false,
-            "wrapper": {"width": "", "class": "", "id": ""},
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "collapsed": "field_trip_highlights_heading",
             "min": 0,
             "max": 4,
@@ -485,7 +616,11 @@
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": false,
-                    "wrapper": {"width": "", "class": "", "id": ""},
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
                     "return_format": "array",
                     "preview_size": "medium",
                     "library": "all",
@@ -507,7 +642,11 @@
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": false,
-                    "wrapper": {"width": "", "class": "", "id": ""},
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
                     "default_value": "",
                     "maxlength": "",
                     "placeholder": "",
@@ -524,7 +663,11 @@
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": false,
-                    "wrapper": {"width": "", "class": "", "id": ""},
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
                     "rows": 3,
                     "new_lines": "br",
                     "default_value": "",
@@ -543,9 +686,14 @@
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
-            "wrapper": {"width": "", "class": "", "id": ""},
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "placement": "top",
-            "endpoint": 0
+            "endpoint": 0,
+            "selected": 0
         },
         {
             "key": "field_trip_itinerary",
@@ -556,8 +704,14 @@
             "instructions": "Select the reusable itinerary for this trip.",
             "required": 0,
             "conditional_logic": 0,
-            "wrapper": {"width": "50", "class": "", "id": ""},
-            "post_type": ["itinerary"],
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "itinerary"
+            ],
             "taxonomy": [],
             "allow_null": 1,
             "multiple": 0,
@@ -574,8 +728,14 @@
             "instructions": "Select the accommodation post for this trip.",
             "required": 0,
             "conditional_logic": 0,
-            "wrapper": {"width": "50", "class": "", "id": ""},
-            "post_type": ["accommodation"],
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "accommodation"
+            ],
             "taxonomy": [],
             "allow_null": 1,
             "multiple": 0,
@@ -592,9 +752,14 @@
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
-            "wrapper": {"width": "", "class": "", "id": ""},
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "placement": "top",
-            "endpoint": 0
+            "endpoint": 0,
+            "selected": 0
         },
         {
             "key": "field_trip_included_items",
@@ -605,7 +770,11 @@
             "instructions": "Single-line items only.",
             "required": 0,
             "conditional_logic": false,
-            "wrapper": {"width": "", "class": "", "id": ""},
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "collapsed": "field_trip_included_items_label",
             "layout": "table",
             "button_label": "Add Included Item",
@@ -622,7 +791,11 @@
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": false,
-                    "wrapper": {"width": "", "class": "", "id": ""},
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
                     "default_value": "",
                     "maxlength": "",
                     "placeholder": "",
@@ -641,7 +814,11 @@
             "instructions": "Single-line items only.",
             "required": 0,
             "conditional_logic": false,
-            "wrapper": {"width": "", "class": "", "id": ""},
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "collapsed": "field_trip_not_included_items_label",
             "layout": "table",
             "button_label": "Add Not Included Item",
@@ -658,7 +835,11 @@
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": false,
-                    "wrapper": {"width": "", "class": "", "id": ""},
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
                     "default_value": "",
                     "maxlength": "",
                     "placeholder": "",
@@ -677,9 +858,14 @@
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
-            "wrapper": {"width": "", "class": "", "id": ""},
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "placement": "top",
-            "endpoint": 0
+            "endpoint": 0,
+            "selected": 0
         },
         {
             "key": "field_trip_getting_there_stages",
@@ -690,7 +876,11 @@
             "instructions": "Each stage can contain multiple travel steps.",
             "required": 0,
             "conditional_logic": false,
-            "wrapper": {"width": "", "class": "", "id": ""},
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "collapsed": "field_trip_getting_there_stage_title",
             "layout": "block",
             "button_label": "Add Stage",
@@ -707,7 +897,11 @@
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": false,
-                    "wrapper": {"width": "", "class": "", "id": ""},
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
                     "default_value": "",
                     "maxlength": "",
                     "placeholder": "",
@@ -724,7 +918,11 @@
                     "instructions": "E.g. \"Trip begins at 4pm\"",
                     "required": 0,
                     "conditional_logic": false,
-                    "wrapper": {"width": "50", "class": "", "id": ""},
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
                     "default_value": "",
                     "maxlength": "",
                     "placeholder": "",
@@ -741,7 +939,11 @@
                     "instructions": "E.g. \"Trip ends at 6pm\"",
                     "required": 0,
                     "conditional_logic": false,
-                    "wrapper": {"width": "50", "class": "", "id": ""},
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
                     "default_value": "",
                     "maxlength": "",
                     "placeholder": "",
@@ -758,7 +960,11 @@
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": false,
-                    "wrapper": {"width": "", "class": "", "id": ""},
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
                     "collapsed": "field_trip_getting_there_step_title",
                     "layout": "block",
                     "button_label": "Add Step",
@@ -775,20 +981,26 @@
                             "type": "select",
                             "instructions": "",
                             "required": 0,
-                            "conditional_logic": false,
-                            "wrapper": {"width": "", "class": "", "id": ""},
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
                             "choices": {
                                 "plane": "Plane",
                                 "ferry": "Ferry",
                                 "car": "Car",
                                 "bus": "Bus",
-                                "train": "Train"
+                                "train": "Train",
+                                "walk": "Walk"
                             },
+                            "default_value": false,
                             "return_format": "value",
-                            "ui": 1,
                             "multiple": 0,
                             "allow_null": 0,
-                            "default_value": false,
+                            "allow_in_bindings": 1,
+                            "ui": 1,
                             "ajax": 0,
                             "placeholder": "",
                             "create_options": 0,
@@ -804,7 +1016,11 @@
                             "instructions": "",
                             "required": 0,
                             "conditional_logic": false,
-                            "wrapper": {"width": "", "class": "", "id": ""},
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
                             "default_value": "",
                             "maxlength": "",
                             "placeholder": "",
@@ -821,7 +1037,11 @@
                             "instructions": "",
                             "required": 0,
                             "conditional_logic": false,
-                            "wrapper": {"width": "", "class": "", "id": ""},
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
                             "tabs": "all",
                             "toolbar": "basic_formatting",
                             "media_upload": 0,
@@ -842,9 +1062,34 @@
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
-            "wrapper": {"width": "", "class": "", "id": ""},
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "placement": "top",
-            "endpoint": 0
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_trip_reviews_embed_code",
+            "label": "Reviews Embed Code",
+            "name": "reviews_embed_code",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "HTML embed code for the reviews section.",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "rows": 6,
+            "new_lines": "",
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": ""
         },
         {
             "key": "field_trip_faqs",
@@ -855,7 +1100,11 @@
             "instructions": "Shown in the FAQs section using the shared accordion component.",
             "required": 0,
             "conditional_logic": false,
-            "wrapper": {"width": "", "class": "", "id": ""},
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "collapsed": "field_trip_faq_question",
             "layout": "block",
             "button_label": "Add FAQ",
@@ -872,7 +1121,11 @@
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": false,
-                    "wrapper": {"width": "", "class": "", "id": ""},
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
                     "default_value": "",
                     "maxlength": "",
                     "placeholder": "",
@@ -889,7 +1142,11 @@
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": false,
-                    "wrapper": {"width": "", "class": "", "id": ""},
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
                     "tabs": "all",
                     "toolbar": "basic_formatting",
                     "media_upload": 0,
@@ -900,22 +1157,6 @@
             ]
         },
         {
-            "key": "field_trip_reviews_embed_code",
-            "label": "Reviews Embed Code",
-            "name": "reviews_embed_code",
-            "aria-label": "",
-            "type": "textarea",
-            "instructions": "HTML embed code for the reviews section.",
-            "required": 0,
-            "conditional_logic": false,
-            "wrapper": {"width": "", "class": "", "id": ""},
-            "rows": 6,
-            "new_lines": "",
-            "default_value": "",
-            "maxlength": "",
-            "placeholder": ""
-        },
-        {
             "key": "field_trip_tab_promo",
             "label": "Promo",
             "name": "",
@@ -924,9 +1165,14 @@
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
-            "wrapper": {"width": "", "class": "", "id": ""},
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "placement": "top",
-            "endpoint": 0
+            "endpoint": 0,
+            "selected": 0
         },
         {
             "key": "field_trip_promo_title",
@@ -937,7 +1183,11 @@
             "instructions": "Heading for the promotional block below the dates section.",
             "required": 0,
             "conditional_logic": false,
-            "wrapper": {"width": "", "class": "", "id": ""},
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "default_value": "",
             "maxlength": "",
             "placeholder": "",
@@ -953,7 +1203,11 @@
             "instructions": "",
             "required": 0,
             "conditional_logic": false,
-            "wrapper": {"width": "", "class": "", "id": ""},
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "default_value": "",
             "maxlength": "",
             "placeholder": "",
@@ -969,7 +1223,11 @@
             "instructions": "",
             "required": 0,
             "conditional_logic": false,
-            "wrapper": {"width": "", "class": "", "id": ""},
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "return_format": "array"
         },
         {
@@ -981,28 +1239,14 @@
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
-            "wrapper": {"width": "", "class": "", "id": ""},
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "placement": "top",
-            "endpoint": 0
-        },
-        {
-            "key": "field_trip_related_trips",
-            "label": "Related Trips",
-            "name": "related_trips",
-            "aria-label": "",
-            "type": "relationship",
-            "instructions": "Select up to 3 trips.",
-            "required": 0,
-            "conditional_logic": false,
-            "wrapper": {"width": "", "class": "", "id": ""},
-            "post_type": ["trip"],
-            "filters": ["search", "taxonomy"],
-            "min": 0,
-            "max": 3,
-            "return_format": "object",
-            "taxonomy": [],
-            "elements": [],
-            "bidirectional_target": []
+            "endpoint": 0,
+            "selected": 0
         },
         {
             "key": "field_trip_related_stories",
@@ -1013,11 +1257,47 @@
             "instructions": "Select up to 2 stories.",
             "required": 0,
             "conditional_logic": false,
-            "wrapper": {"width": "", "class": "", "id": ""},
-            "post_type": ["story"],
-            "filters": ["search"],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "story"
+            ],
+            "filters": [
+                "search"
+            ],
             "min": 0,
             "max": 2,
+            "return_format": "object",
+            "taxonomy": [],
+            "elements": [],
+            "bidirectional_target": []
+        },
+        {
+            "key": "field_trip_related_trips",
+            "label": "Related Trips",
+            "name": "related_trips",
+            "aria-label": "",
+            "type": "relationship",
+            "instructions": "Select up to 3 trips.",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "trip"
+            ],
+            "filters": [
+                "search",
+                "taxonomy"
+            ],
+            "min": 0,
+            "max": 3,
             "return_format": "object",
             "taxonomy": [],
             "elements": [],
@@ -1031,6 +1311,13 @@
                 "operator": "==",
                 "value": "trip"
             }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "events"
+            }
         ]
     ],
     "menu_order": 0,
@@ -1041,6 +1328,9 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "show_in_rest": false,
-    "modified": 1800000001
+    "show_in_rest": 0,
+    "display_title": "",
+    "allow_ai_access": false,
+    "ai_description": "",
+    "modified": 1779983192
 }
