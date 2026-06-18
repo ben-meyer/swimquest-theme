@@ -43,10 +43,16 @@ class Admin
 
     /**
      * Add a top-level "Menus" item linking directly to nav-menus.php.
+     *
+     * The required capability is filterable so projects opting into editor
+     * nav-menu access (see Gust\WordPress\EditorMenuAccess) can lower it
+     * to `edit_theme_options` — the cap nav-menus.php itself enforces.
      */
     public static function addMenusTopLevelItem(): void
     {
-        \add_menu_page('Menus', 'Menus', 'manage_options', 'nav-menus.php', '', 'dashicons-welcome-widgets-menus');
+        $cap = \apply_filters('gust/menus_top_level_cap', 'manage_options');
+
+        \add_menu_page('Menus', 'Menus', $cap, 'nav-menus.php', '', 'dashicons-welcome-widgets-menus');
     }
 
     /**
