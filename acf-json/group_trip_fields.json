@@ -477,8 +477,8 @@
             "label": "Lead Paragraph",
             "name": "intro_lead",
             "aria-label": "",
-            "type": "textarea",
-            "instructions": "Large intro paragraph shown above the highlights.",
+            "type": "wysiwyg",
+            "instructions": "Large intro paragraph shown above the highlights. Supports basic formatting and links.",
             "required": 0,
             "conditional_logic": false,
             "wrapper": {
@@ -486,19 +486,19 @@
                 "class": "",
                 "id": ""
             },
-            "rows": 3,
-            "new_lines": "br",
+            "tabs": "all",
+            "toolbar": "basic_formatting",
+            "media_upload": 0,
             "default_value": "",
-            "maxlength": "",
-            "placeholder": ""
+            "delay": 0
         },
         {
             "key": "field_trip_intro_body",
             "label": "Body Paragraph",
             "name": "intro_body",
             "aria-label": "",
-            "type": "textarea",
-            "instructions": "Standard intro paragraph shown below the lead.",
+            "type": "wysiwyg",
+            "instructions": "Standard intro paragraph shown below the lead. Supports basic formatting and links.",
             "required": 0,
             "conditional_logic": false,
             "wrapper": {
@@ -506,11 +506,11 @@
                 "class": "",
                 "id": ""
             },
-            "rows": 5,
-            "new_lines": "br",
+            "tabs": "all",
+            "toolbar": "basic_formatting",
+            "media_upload": 0,
             "default_value": "",
-            "maxlength": "",
-            "placeholder": ""
+            "delay": 0
         },
         {
             "key": "field_trip_intro_gallery",

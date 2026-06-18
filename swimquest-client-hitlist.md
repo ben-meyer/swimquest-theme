@@ -43,7 +43,7 @@ All in `components/trip-dates/` (used by both Trip and Event) and `TripPageHeade
   Closes: [Destinations: hide if no trips assigned](https://trello.com/c/y07tMdej)
 - [x] **Related Trips: allow Events** — Added `"events"` (plural, the actual slug per `Theme/Modules/Events/PostType.php`) to `post_type` array on `field_trip_related_trips` in `acf-json/group_trip_fields.json`; instructions updated. `TripCards`/`TripCard` render path has no post-type assumptions so events render via the same card component.
   Closes: [Related trips include events](https://trello.com/c/RoUDb8gN)
-- [ ] **Intro paragraph → rich text** — `acf-json/group_trip_fields.json` `intro_body`: `textarea` → `wysiwyg`; render with `wp_kses_post` (template change required)
+- [x] **Intro paragraph → rich text** — `intro_lead` and `intro_body` switched from `textarea` to `wysiwyg` (basic_formatting toolbar, no media upload). `trip-intro/template.php` wrappers changed from `<p>` to `<div>` to avoid nested-paragraph invalidity. Margin reset on nested `<p>` in `styles.pcss` so wysiwyg-generated paragraphs don't introduce stray gaps. Existing plain-text DB content renders fine — ACF's wysiwyg `get_field()` runs `wpautop()` so no migration needed.
   Closes: [Link in intro paragraphs](https://trello.com/c/31vZISBT)
 - [x] **Reorder trip styles on homepage** — Installed `simple-custom-post-order` plugin via composer. Theme query is plugin-agnostic (no `orderby` passed). Client activates plugin → Settings → SCPOrder → tick "Trip Styles" only → drag terms into desired order.
   Closes: [Reorder trip styles](https://trello.com/c/PT7TDvdY)

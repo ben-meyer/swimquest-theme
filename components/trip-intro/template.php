@@ -10,14 +10,14 @@
     <div class="trip-intro__inner content-width-sm align-left w-full">
         <?php if (! empty($this->lead)) {
             echo \Gust\Components\Element::make(
-                el: 'p',
+                el: 'div',
                 content: $this->lead,
                 classes: ['trip-intro__lead', 'is-style-type-large'],
             );
         } ?>
         <?php if (! empty($this->body)) {
             echo \Gust\Components\Element::make(
-                el: 'p',
+                el: 'div',
                 content: $this->body,
                 classes: ['trip-intro__body', 'is-style-type-regular'],
             );

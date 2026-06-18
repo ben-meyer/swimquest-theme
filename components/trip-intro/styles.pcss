@@ -7,4 +7,12 @@
 .trip-intro__lead,
 .trip-intro__body {
     margin: 0;
+
+    & > p {
+        margin: 0;
+
+        & + p {
+            margin-top: spaceFluid(8, 12);
+        }
+    }
 }
