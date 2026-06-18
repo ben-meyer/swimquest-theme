@@ -108,6 +108,14 @@ class Card extends ComponentBase
                             : esc_html($metaAuthor['title']);
                         $args['content']['meta'] = sprintf(__('by %s', 'gust'), $metaAuthor);
                     }
+                } elseif ($object->post_type === 'guide') {
+                    $args['type'] = 'guide';
+                    $args['show_read_more'] = false;
+                    $args['heading_class'] = 'is-style-type-h4';
+
+                    if ($role = \get_field('role', $object->ID)) {
+                        $args['content']['meta'] = esc_html($role);
+                    }
                 }
             } elseif ($args['object'] instanceof \WP_Term) {
                 $args['content'] = [

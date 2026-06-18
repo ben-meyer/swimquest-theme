@@ -60,8 +60,8 @@ All in `components/trip-dates/` (used by both Trip and Event) and `TripPageHeade
   Closes: [Homepage horizontal scroll](https://trello.com/c/oElP7Xxr)
 - [ ] **Guest story design — top image** — `singular.php:22-37` routes stories to default page-header + the_content. Build `components/story-single/` (mirror trip approach) with a designed hero strip rather than full-bleed image.
   Closes: [Guest story design](https://trello.com/c/k1CMWWxC) — *❓ confirm desired layout*
-- [ ] **Team page role subtitle** — `components/text-items/template.php` already has `meta` field rendered above title. Either expose `meta` for team items or add a dedicated `role` subfield in the team component.
-  Closes: [HQ team role subtitle](https://trello.com/c/VBikBKso) — *❓ confirm: small-caps light-blue style under name?*
+- [x] **Team page role subtitle** — Added `role` ACF text field on the `guide` post type (`Theme/Modules/Guides/acf-json/group_guide_role.json`, mirrors the story `contributor_name` pattern). New `guide` branch in `Card::transform()` populates `content.meta` from the role field, rendered via the existing `.g-card__meta` markup. Team page Cards block (set to selected guides) will show each guide's role beneath their name.
+  Closes: [HQ team role subtitle](https://trello.com/c/VBikBKso)
 - [x] **Form styling** — CF7. Added `assets/styles/3-patterns/_contact-form-7.pcss` base pattern: brand-styled checkboxes/radios (appearance:none + custom box), inline-grid centring (covers both CF7 markup variants — with/without `<label>` wrapper), explicit `transform: none` to defeat the base `translateY(0.15em)` baseline nudge that breaks custom-styled boxes. Inherited by every CF7 form on the site.
   Closes: [Form styling](https://trello.com/c/h4RADrOJ)
 - [ ] **Itinerary day heading override** — `preview_days` repeater already has a `title` subfield (`components/trip-itinerary-preview/TripItineraryPreview.php:17`). Verify it's being rendered in place of "Day N" when populated; if not, update template to prefer custom title over `sprintf('Day %d')`.
