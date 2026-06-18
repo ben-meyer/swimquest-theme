@@ -9,7 +9,9 @@
         "wpackagist-plugin/safe-svg": "*",
         "wpackagist-plugin/wordpress-seo": "*",
         "wpackagist-plugin/contact-form-7": "^6.1",
-        "wpengine/advanced-custom-fields-pro": "*"
+        "wpengine/advanced-custom-fields-pro": "*",
+        "wpackagist-plugin/contact-form-7-mailchimp-extension": "^0.9.78",
+        "wpackagist-plugin/simple-custom-post-order": "^2.8"
     },
     "require-dev": {
         "php-stubs/acf-pro-stubs": "^6.2",

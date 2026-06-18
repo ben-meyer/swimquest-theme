@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ef6e493e7e9c057d5cdac8eebc0ecbef",
+    "content-hash": "2e77841bf9cac18b1717a2c7cc159b87",
     "packages": [
         {
             "name": "composer/installers",
@@ -623,6 +623,24 @@
             "homepage": "https://wordpress.org/plugins/contact-form-7/"
         },
         {
+            "name": "wpackagist-plugin/contact-form-7-mailchimp-extension",
+            "version": "0.9.78.04",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/contact-form-7-mailchimp-extension/",
+                "reference": "tags/0.9.78.04"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/contact-form-7-mailchimp-extension.0.9.78.04.zip"
+            },
+            "require": {
+                "composer/installers": "^1.0 || ^2.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/contact-form-7-mailchimp-extension/"
+        },
+        {
             "name": "wpackagist-plugin/query-monitor",
             "version": "3.20.2",
             "source": {
@@ -657,6 +675,24 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/safe-svg/"
+        },
+        {
+            "name": "wpackagist-plugin/simple-custom-post-order",
+            "version": "2.8.0",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/simple-custom-post-order/",
+                "reference": "tags/2.8.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/simple-custom-post-order.2.8.0.zip"
+            },
+            "require": {
+                "composer/installers": "^1.0 || ^2.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/simple-custom-post-order/"
         },
         {
             "name": "wpackagist-plugin/wordpress-seo",
