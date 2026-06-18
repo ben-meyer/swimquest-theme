@@ -26,11 +26,11 @@ All in `components/trip-dates/` (used by both Trip and Event) and `TripPageHeade
   Closes: [Leave stats blank → don't show](https://trello.com/c/LSX8Dhkc)
 - [ ] **Hide "Dates and Booking" section + top button when no dates exist** — guard in event template + page header
   Closes: [Remove booking dates → remove section](https://trello.com/c/oRzd94aY)
-- [ ] **Single-date formatting** — when start == end show "8 Feb" not "8-8 Feb"; fix in the date range formatter in `TripData` / `TripDates`
+- [x] **Single-date formatting** — when start == end show "8 Feb" not "8-8 Feb"; fix in the date range formatter in `TripData` / `TripDates`
   Closes: [Sole date display](https://trello.com/c/O4UTKFOw)
 - [ ] **"Coming soon" CTA when no dates/booking link** — add ACF option (form URL) on event; render fallback button when dates array is empty
   Closes: [Coming soon button](https://trello.com/c/flpZnz2X) — *needs form URL from client*
-- [ ] **Temperature: single number → no dash** — `formatRange()` guard, or specific handling in stats rendering. Currently `28 - 0` style appears.
+- [x] **Temperature: single number → no dash** — `formatRange()` guard, or specific handling in stats rendering. Currently `28 - 0` style appears.
   Closes: [Temperature field 1 number](https://trello.com/c/N4GT87Kp)
 - [ ] **Investigate "not pulling in all events"** — `Theme/Modules/Events/module.php:38-59` filters archive to upcoming only via `filterArchiveToUpcomingEvents()`. Confirm with client whether past/no-date events should be hidden or shown.
   Closes: [Events archive not pulling all events](https://trello.com/c/lkaMw1lX) — *❓ confirm intent with client*

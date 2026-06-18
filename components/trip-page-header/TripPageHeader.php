@@ -124,11 +124,14 @@ class TripPageHeader extends ComponentBase
 
     protected static function formatRange(mixed $min, mixed $max, string $suffix): ?string
     {
-        if ($min === null && $max === null) {
+        $hasMin = $min !== null && $min !== '';
+        $hasMax = $max !== null && $max !== '';
+
+        if (! $hasMin && ! $hasMax) {
             return null;
         }
 
-        if ($min !== null && $max !== null) {
+        if ($hasMin && $hasMax) {
             if ((string) $min === (string) $max) {
                 return $min.$suffix;
             }
@@ -136,6 +139,6 @@ class TripPageHeader extends ComponentBase
             return $min.'-'.$max.$suffix;
         }
 
-        return ($min ?? $max).$suffix;
+        return ($hasMin ? $min : $max).$suffix;
     }
 }

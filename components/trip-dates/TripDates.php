@@ -44,15 +44,17 @@ class TripDates extends ComponentBase
 
             $start_timestamp = $start ? \strtotime($start) : false;
             $end_timestamp   = $end ? \strtotime($end) : false;
+            $same_day        = $start_timestamp && $end_timestamp
+                && \date('Y-m-d', $start_timestamp) === \date('Y-m-d', $end_timestamp);
             $same_month      = $start_timestamp && $end_timestamp
                 && \date('Y-m', $start_timestamp) === \date('Y-m', $end_timestamp);
 
-            $fmt_start = $start_timestamp ? \date_i18n($same_month ? 'j' : 'j M', $start_timestamp) : '';
-            $fmt_end   = $end_timestamp ? \date_i18n('j M Y', $end_timestamp) : '';
-
-            $label = $fmt_start;
-            if ($fmt_end && $fmt_end !== $fmt_start) {
-                $label .= ' – '.$fmt_end;
+            if (! $end_timestamp || $same_day) {
+                $label = $start_timestamp ? \date_i18n('j M Y', $start_timestamp) : '';
+            } else {
+                $fmt_start = \date_i18n($same_month ? 'j' : 'j M', $start_timestamp);
+                $fmt_end   = \date_i18n('j M Y', $end_timestamp);
+                $label     = $fmt_start.' – '.$fmt_end;
             }
 
             $nights = null;
