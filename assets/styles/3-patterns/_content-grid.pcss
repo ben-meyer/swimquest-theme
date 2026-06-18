@@ -47,3 +47,11 @@
         grid-column: 2 / 8;
     }
 }
+
+/* Story singles: full-bleed images respect the page boundary.
+ * Galleries, page-header, related-stories and other full-bleed sections
+ * stay unaffected — this only constrains image blocks. */
+.single-story .content-grid > :is(img, figure.wp-block-image).alignfull {
+    grid-column: wide;
+    width: 100%;
+}
