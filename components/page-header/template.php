@@ -8,6 +8,18 @@
     <?php } ?>
 
     <div class="page-header__inner">
+        <?php if (! empty($this->actions)) { ?>
+            <div class="page-header__actions">
+                <?php foreach ($this->actions as $action) {
+                    echo \Gust\Components\Button::make(
+                        content: $action['label'],
+                        classes: ['btn', 'btn--theme-2', 'page-header__actions__btn'],
+                        attributes: $action['attributes'] ?? [],
+                    );
+                } ?>
+            </div>
+        <?php } ?>
+
         <?php if (! empty($this->image) && $this->image_position === 'square') { ?>
             <div class="page-header__square-image">
                 <div class="page-header__square-image-inner img-fit">

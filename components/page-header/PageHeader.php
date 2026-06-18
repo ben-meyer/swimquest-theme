@@ -40,6 +40,7 @@ class PageHeader extends ComponentBase
         array $attributes = [],
         ?bool $show_breadcrumbs = null,
         ?array $back_link = null,
+        ?array $actions = null,
         ...$others
     ): ?static {
         return static::createFromArgs(static::mergeArgs(get_defined_vars()));
@@ -128,12 +129,23 @@ class PageHeader extends ComponentBase
                         $args['image'] = $thumbnail_id;
                         $args['image_position'] = 'square';
                     }
+
+                    if ($role = \get_field('role', $object->ID)) {
+                        $args['meta'] = esc_html($role);
+                    }
                 } elseif (in_array($object->post_type, ['accommodation', 'itinerary'], true)) {
                     $args['background'] = 'none';
                     $args['image'] = null;
                     $args['classes'][] = 'page-header--align-left';
                     $args['type'] = $object->post_type;
                     $args['show_breadcrumbs'] = false;
+
+                    if ($object->post_type === 'itinerary') {
+                        $args['actions'][] = [
+                            'label' => __('Download & Print', 'gust'),
+                            'attributes' => ['onclick' => 'window.print()', 'type' => 'button'],
+                        ];
+                    }
                 }
 
                 if ($heading === 'Auto Draft') {

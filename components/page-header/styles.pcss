@@ -216,6 +216,29 @@
         text-align: left;
     }
 
+    @media (width >= theme('screens.md')) {
+        &:has(.page-header__actions) {
+            --page-header--grid-template-areas: 'actions' 'content';
+        }
+    }
+
+    :where(.page-header__actions) {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: space(16);
+        grid-area: actions;
+        width: 100%;
+
+        :where(.page-header__actions__btn) {
+            min-width: 160px;
+        }
+
+        @media (width < theme('screens.md')) {
+            display: none;
+        }
+    }
+
     &.has-background {
         padding-top: var(--media-content--outer-padding-block, 0);
         padding-bottom: var(--media-content--outer-padding-block, 0);
