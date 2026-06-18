@@ -46,7 +46,7 @@ class Admin
      */
     public static function addMenusTopLevelItem(): void
     {
-        \add_menu_page('Menus', 'Menus', 'manage_options', 'nav-menus.php', '', 'dashicons-welcome-widgets-menus');
+        \add_menu_page('Menus', 'Menus', 'edit_theme_options', 'nav-menus.php', '', 'dashicons-welcome-widgets-menus');
     }
 
     /**

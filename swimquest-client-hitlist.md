@@ -45,10 +45,12 @@ All in `components/trip-dates/` (used by both Trip and Event) and `TripPageHeade
   Closes: [Related trips include events](https://trello.com/c/RoUDb8gN)
 - [ ] **Intro paragraph → rich text** — `acf-json/group_trip_fields.json` `intro_body`: `textarea` → `wysiwyg`; render with `wp_kses_post` (template change required)
   Closes: [Link in intro paragraphs](https://trello.com/c/31vZISBT)
-- [ ] **Reorder trip styles on homepage** — `Theme/Controllers/TripStylesController.php:12-16` uses `menu_order` (admin-set). Set the term menu_order in WP admin to: Relax & Explore / Technique / Challenge / Short Swims / Family. (Code change only if menu_order isn't being respected.)
+- [x] **Reorder trip styles on homepage** — Installed `simple-custom-post-order` plugin via composer. Theme query is plugin-agnostic (no `orderby` passed). Client activates plugin → Settings → SCPOrder → tick "Trip Styles" only → drag terms into desired order.
   Closes: [Reorder trip styles](https://trello.com/c/PT7TDvdY)
 - [ ] **About Us page hierarchy** — Re-parent About Us out from under Events in WP page tree; add Guides as child of About Us (`wp post list --post_type=page` to confirm current state)
   Closes: [About Us nested under events](https://trello.com/c/aacVWlua)
+- [x] **Editor role: nav-menus access (quicklinks)** — `Gust/WordPress/Admin.php` top-level Menus item cap `manage_options` → `edit_theme_options`; `Theme/Modules/Core/Menus.php` grants editors `edit_theme_options`, hides Appearance sidebar item, redirects direct URLs (themes/customize/widgets/theme-editor) and removes the admin-bar Customize node for non-admins.
+  Closes: editor quicklinks/menu access (Trello card)
 
 ---
 
@@ -74,9 +76,8 @@ All in `components/trip-dates/` (used by both Trip and Event) and `TripPageHeade
 - [ ] **Mailchimp signup** — no newsletter component exists. Footer has `footer_form` shortcode field.
   Closes: [Mailchimp email signups](https://trello.com/c/z3LA3Rba)
   *❓ Use MC4WP plugin + shortcode in footer, or build native component posting to Mailchimp API?*
-- [ ] **Feefo placement** — no Feefo integration in code yet.
+- [x] **Feefo placement** — Reverted commit `0e54ad6` ("remove button from testimonial cards") to restore the ACF `button` field on `testimonial-cards` and its template render. Client enters the Feefo URL into the button field per card.
   Closes: [Feefo review placement](https://trello.com/c/NZRPO0gp)
-  *❓ Inline under review block, floating widget, or side button?* - Solution: Add button link back into testimonial cards, it was there before.
 - [ ] **Partnerships page** — no partnerships component / page template in codebase yet.
   Closes: [External links yellow block](https://trello.com/c/k5s5m5IY), [Contact block on partnerships](https://trello.com/c/x13z7KHj), [Partnerships URL](https://trello.com/c/b9PmYtio)
   *❓ Is the page being built from existing blocks (and needs styling fixes), or does it need a custom template?* 
