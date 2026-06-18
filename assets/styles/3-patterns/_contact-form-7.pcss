@@ -18,7 +18,10 @@
     display: flex;
     flex-wrap: wrap;
     gap: var(--input--gap) calc(var(--input--gap) * 2);
-    margin-top: space(8);
+    /* Heading→field gap. Text inputs use space(12), but they have a visible
+       border that anchors the eye — checkbox groups need a bit more
+       breathing room to read as the same gap. */
+    margin-top: space(16);
 
     .wpcf7-list-item {
         margin: 0;
@@ -101,9 +104,3 @@
     }
 }
 
-/* Single-checkbox controls (newsletter opt-in, T&Cs) — keep on one line
-   with the label inline-flex, no wrapping needed. */
-.wpcf7-acceptance,
-.wpcf7-checkbox:has(> .wpcf7-list-item.first.last) {
-    margin-top: 0;
-}
