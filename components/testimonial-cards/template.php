@@ -24,6 +24,11 @@
                 <?php } ?>
             </div>
 
+            <?php if (! empty($this->button)) { ?>
+                <div class="testimonial-cards__footer">
+                    <?= \Gust\Components\Link::make(...$this->button); ?>
+                </div>
+            <?php } ?>
         </div>
     </section>
 <?php } ?>
