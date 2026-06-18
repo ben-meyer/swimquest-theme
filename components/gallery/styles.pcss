@@ -23,12 +23,8 @@ sq-gallery {
     .gallery__prev,
     .gallery__next {
         position: absolute;
-        top: 50%;
+        top: calc((100% - var(--gallery-caption-space, 60px)) / 2);
         transform: translateY(-50%);
-
-        @media (width < theme('screens.sm')) {
-            top: calc((100% - var(--gallery-caption-space, 60px)) / 2);
-        }
 
         z-index: 10;
         display: flex;
