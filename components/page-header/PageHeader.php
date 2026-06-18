@@ -134,10 +134,6 @@ class PageHeader extends ComponentBase
                     $args['classes'][] = 'page-header--align-left';
                     $args['type'] = $object->post_type;
                     $args['show_breadcrumbs'] = false;
-                    $args['back_link'] = [
-                        'url' => \get_post_type_archive_link($object->post_type) ?: \home_url('/'),
-                        'label' => __('Back', 'gust'),
-                    ];
                 }
 
                 if ($heading === 'Auto Draft') {
