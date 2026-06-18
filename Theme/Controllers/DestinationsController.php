@@ -11,7 +11,7 @@ class DestinationsController
     {
         $terms = \get_terms([
             'taxonomy' => 'country',
-            'hide_empty' => false,
+            'hide_empty' => true,
             'orderby' => 'name',
             'order' => 'ASC',
             'limit' => 12,

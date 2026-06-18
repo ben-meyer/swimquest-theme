@@ -39,7 +39,7 @@ All in `components/trip-dates/` (used by both Trip and Event) and `TripPageHeade
 
 ## 🅲 Quick wins (obvious from code)
 
-- [ ] **Destinations archive: hide empty terms** — `Theme/Controllers/DestinationsController.php:12-18`, `hide_empty => false` → `true`
+- [x] **Destinations archive: hide empty terms** — `Theme/Controllers/DestinationsController.php`, `hide_empty => false` → `true`. Country taxonomy is registered for both `trip` and `events` post types, so empty = no trips AND no events assigned.
   Closes: [Destinations: hide if no trips assigned](https://trello.com/c/y07tMdej)
 - [x] **Related Trips: allow Events** — Added `"events"` (plural, the actual slug per `Theme/Modules/Events/PostType.php`) to `post_type` array on `field_trip_related_trips` in `acf-json/group_trip_fields.json`; instructions updated. `TripCards`/`TripCard` render path has no post-type assumptions so events render via the same card component.
   Closes: [Related trips include events](https://trello.com/c/RoUDb8gN)
