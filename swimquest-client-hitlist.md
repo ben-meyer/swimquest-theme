@@ -78,9 +78,8 @@ All in `components/trip-dates/` (used by both Trip and Event) and `TripPageHeade
   *❓ Use MC4WP plugin + shortcode in footer, or build native component posting to Mailchimp API?*
 - [x] **Feefo placement** — Reverted commit `0e54ad6` ("remove button from testimonial cards") to restore the ACF `button` field on `testimonial-cards` and its template render. Client enters the Feefo URL into the button field per card.
   Closes: [Feefo review placement](https://trello.com/c/NZRPO0gp)
-- [ ] **Partnerships page** — no partnerships component / page template in codebase yet.
+- [x] **Partnerships page** — Custom-content Cards block was hiding the read-more button when the link's title field was empty, which only happened for external URLs (WP's link picker auto-populates the title for internal posts). Fixed `Card.php` to fall back to the parent Cards block's default text ("Read More"), propagate the link target so "open in new tab" reaches both the button and the heading link, and stamp the `btn--theme-2` (yellow) variant on every custom-card button so internal and external links look consistent.
   Closes: [External links yellow block](https://trello.com/c/k5s5m5IY), [Contact block on partnerships](https://trello.com/c/x13z7KHj), [Partnerships URL](https://trello.com/c/b9PmYtio)
-  *❓ Is the page being built from existing blocks (and needs styling fixes), or does it need a custom template?* 
 - [ ] **Screenshot 2026-06-18 at 11.48.34.png** — card has no text, just an image
   Closes: [Screenshot card](https://trello.com/c/XWFTOjin) — *❓ what's the issue here?* Fix yellow buttons for this card style
 - [ ] **CMS Training guide** — internal/admin documentation task
