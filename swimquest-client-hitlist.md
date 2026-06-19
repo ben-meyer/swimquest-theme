@@ -32,8 +32,8 @@ All in `components/trip-dates/` (used by both Trip and Event) and `TripPageHeade
   Closes: [Coming soon button](https://trello.com/c/flpZnz2X) — *needs form URL from client*
 - [x] **Temperature: single number → no dash** — `formatRange()` guard, or specific handling in stats rendering. Currently `28 - 0` style appears.
   Closes: [Temperature field 1 number](https://trello.com/c/N4GT87Kp)
-- [ ] **Investigate "not pulling in all events"** — `Theme/Modules/Events/module.php:38-59` filters archive to upcoming only via `filterArchiveToUpcomingEvents()`. Confirm with client whether past/no-date events should be hidden or shown.
-  Closes: [Events archive not pulling all events](https://trello.com/c/lkaMw1lX) — *❓ confirm intent with client*
+- [x] **Investigate "not pulling in all events"** — `Theme/Modules/Events/module.php:38-59` filters archive to upcoming only via `filterArchiveToUpcomingEvents()`. Confirm with client whether past/no-date events should be hidden or shown.
+  Closes: [Events archive not pulling all events](https://trello.com/c/lkaMw1lX) — *❓ confirm intent with client* We've asked client what they want to do - we order by date as per Calendar.
 
 ---
 
@@ -58,14 +58,14 @@ All in `components/trip-dates/` (used by both Trip and Event) and `TripPageHeade
 
 - [ ] **Homepage horizontal scroll (mobile)** — needs Chrome DevTools investigation. Likely culprit: a flex/grid child with `min-width: auto` (see memory: `css_grid_flex_min_width_auto`). Check hero, marquees, carousels.
   Closes: [Homepage horizontal scroll](https://trello.com/c/oElP7Xxr)
-- [ ] **Guest story design — top image** — `singular.php:22-37` routes stories to default page-header + the_content. Build `components/story-single/` (mirror trip approach) with a designed hero strip rather than full-bleed image.
+- [x] **Guest story design — top image** — `singular.php:22-37` routes stories to default page-header + the_content. Build `components/story-single/` (mirror trip approach) with a designed hero strip rather than full-bleed image. We Added a boundary
   Closes: [Guest story design](https://trello.com/c/k1CMWWxC) — *❓ confirm desired layout*
 - [x] **Team page role subtitle** — Added `role` ACF text field on the `guide` post type (`Theme/Modules/Guides/acf-json/group_guide_role.json`, mirrors the story `contributor_name` pattern). New `guide` branch in `Card::transform()` populates `content.meta` from the role field, rendered via the existing `.g-card__meta` markup. Team page Cards block (set to selected guides) will show each guide's role beneath their name.
   Closes: [HQ team role subtitle](https://trello.com/c/VBikBKso)
 - [x] **Form styling** — CF7. Added `assets/styles/3-patterns/_contact-form-7.pcss` base pattern: brand-styled checkboxes/radios (appearance:none + custom box), inline-grid centring (covers both CF7 markup variants — with/without `<label>` wrapper), explicit `transform: none` to defeat the base `translateY(0.15em)` baseline nudge that breaks custom-styled boxes. Inherited by every CF7 form on the site.
   Closes: [Form styling](https://trello.com/c/h4RADrOJ)
-- [ ] **Itinerary day heading override** — `preview_days` repeater already has a `title` subfield (`components/trip-itinerary-preview/TripItineraryPreview.php:17`). Verify it's being rendered in place of "Day N" when populated; if not, update template to prefer custom title over `sprintf('Day %d')`.
-  Closes: [Override "Day 1" headings](https://trello.com/c/qSLTcfWC)
+- [x] **Itinerary day heading override** — `preview_days` repeater already has a `title` subfield (`components/trip-itinerary-preview/TripItineraryPreview.php:17`). Verify it's being rendered in place of "Day N" when populated; if not, update template to prefer custom title over `sprintf('Day %d')`.
+  Closes: [Override "Day 1" headings](https://trello.com/c/qSLTcfWC) - Client archived this themselves
 - [ ] **Getting There: general note field** — add a top-level textarea/wysiwyg to the Getting There ACF group, render in `TripGettingThere`
   Closes: [General note on Getting There](https://trello.com/c/xZEJ4e9H) — *❓ confirm with Alice: above dropdowns, below, or per-dropdown?*
 
