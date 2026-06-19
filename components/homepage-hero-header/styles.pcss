@@ -120,8 +120,12 @@
     :where(.homepage-hero-header__content) {
         position: absolute;
         bottom: 60px;
+        /* Explicit left/right anchoring — without these, iOS Safari uses the
+         * "static position" (centered in the grid area) as the left edge and
+         * then applies width: 100% on top of that, pushing content right of
+         * the viewport. Headless Chrome normalises this; iOS does not. */
+        inset-inline: 0;
         display: grid;
-        width: 100%;
         flex-flow: column nowrap;
         grid-area: content;
         justify-items: var(--homepage-hero-header--grid-alignment-x);
