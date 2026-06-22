@@ -518,13 +518,17 @@ Full-width hero that auto-populates from the current page, post, term, or router
 
 **Auto-population by context:**
 - `post` (blog): hero featured image, adds publication date and author as meta, applies `article` type, removes background colour
-- `story`: removes background and image, applies left-aligned variant (`page-header--align-left`), suppresses breadcrumbs, applies `story` type. Reads `contributor_name` field and renders "By {name}" as meta text.
+- `story`: removes background and image, applies left-aligned variant (`page-header--align-left`), applies `story` type. Reads `contributor_name` field and renders "By {name}" as meta text.
 - `guide`: square 300px featured image (when present), suppresses breadcrumbs, forces subheading to "Meet our team", removes background, applies `guide` type. The subheading renders **above** the heading, while the heading renders below — this is the only type where the order is reversed.
 - `accommodation` / `itinerary`: removes background and image, applies left-aligned variant (`page-header--align-left`), suppresses breadcrumbs, injects a "Back" link to the post-type archive (falls back to home)
 - `trip_style` term: pulls `subheading` from term-level ACF fields (`group_trip_style_taxonomy`); suppresses hero image on archives
 - General `WP_Term`: reads `subheading` and `image` from term ACF fields if available
 - `page` (top-level, no parent): suppresses breadcrumbs
 - `page` (front page): adds `page-header--home` class, suppresses breadcrumbs
+
+**Breadcrumb trailing-crumb rule:**
+- Yoast breadcrumbs render the full trail in the DOM, including the current page as the last item (`<span class="breadcrumb_last" aria-current="page">`), with `aria-current="page"` preserved for assistive tech and the BreadcrumbList JSON-LD schema kept intact for SEO.
+- Inside the page header, the last crumb and its preceding separator are visually hidden via CSS (`components/page-header/styles.pcss`) because the page heading directly below already shows the title. This avoids visible duplication while keeping accessibility and Google's BreadcrumbList structured-data intact.
 
 ### Trip Page Header [Block]
 
