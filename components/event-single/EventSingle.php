@@ -30,6 +30,8 @@ class EventSingle extends ComponentBase
 
         $args['post_id'] = $postId;
         $args['faqs'] = \get_field('faqs', $postId) ?: [];
+        $args['intro_gallery'] = \get_field('intro_gallery', $postId) ?: [];
+        $args['mid_gallery'] = \get_field('mid_gallery', $postId) ?: [];
 
         return $args;
     }
