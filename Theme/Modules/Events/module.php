@@ -2,10 +2,10 @@
 
 namespace Theme\Modules\Events;
 
-use Gust\Components\Cards;
 use Gust\Components\NoContent;
 use Gust\Components\Pagination;
 use Gust\Components\TaxonomyFilters;
+use Gust\Components\TripCards;
 use Gust\WordPress\PageObject;
 use Theme\Utils\TripData;
 
@@ -72,7 +72,7 @@ class EventsModule
 
         if (! empty($items)) {
             echo TaxonomyFilters::make(object: $object);
-            echo Cards::make(items: $items, columns: '3', card_type: 'trip-style', type: 'trip-style', default_read_more: 'View & Book');
+            echo TripCards::make(items: $items);
             echo Pagination::make();
         } else {
             echo NoContent::make(object: $object);
