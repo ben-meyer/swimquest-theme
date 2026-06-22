@@ -11,7 +11,7 @@
                     <?php if (! empty($this->heading)) { ?>
                         <?= \Gust\Components\Heading::make(
                             heading: $this->heading,
-                            classes: ['trip-cards__heading', 'type-h1'],
+                            classes: ['trip-cards__heading'],
                         ); ?>
                     <?php } ?>
 

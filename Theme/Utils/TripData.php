@@ -143,14 +143,14 @@ class TripData
 
         if (count($rows) !== 1) {
             return [
-                'label' => __('Make an enquiry', 'gust'),
+                'label' => __('Enquire', 'gust'),
                 'url' => '#trip-dates',
                 'is_link' => true,
             ];
         }
 
         return [
-            'label' => __('Make an enquiry', 'gust'),
+            'label' => __('Enquire', 'gust'),
             'url' => $enquiryRows[0]['enquiry_url'],
             'target' => '_blank',
             'is_link' => true,

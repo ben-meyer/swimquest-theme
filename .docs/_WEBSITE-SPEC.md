@@ -577,7 +577,7 @@ Sticky trip-only section navigation under the hero, registered as `acf/trip-sect
   - Zero dates or multiple dates: "View dates & book" anchor link to `#trip-dates`
   - Single bookable date with `booking_url`: "Book" linking to the external booking URL
   - Single date that is not bookable (or bookable with no `booking_url`): non-linked status label (e.g. "Sold Out", "Private Group")
-- Enquiry CTA: when any departure has an `enquiry_url`, a separate "Make an enquiry" button is rendered. With multiple dates it links to `#trip-dates`; with a single date it links directly to that departure's `enquiry_url`.
+- Enquiry CTA: when any departure has an `enquiry_url`, a separate "Enquire" button is rendered. With multiple dates it links to `#trip-dates`; with a single date it links directly to that departure's `enquiry_url`.
 
 **Fields:**
 - No block fields. Derived from trip data and relationships.
