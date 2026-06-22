@@ -38,6 +38,73 @@ class TripData
         return count(self::getDateRows($postId)) > 1;
     }
 
+    public static function getNearestUpcomingDate(int $postId, ?string $today = null): ?string
+    {
+        $today ??= \current_time('Y-m-d');
+        $nearest = null;
+
+        foreach (self::getDateRows($postId) as $row) {
+            if (empty($row['start_date']) || $row['start_date'] < $today) {
+                continue;
+            }
+
+            if ($nearest === null || $row['start_date'] < $nearest) {
+                $nearest = $row['start_date'];
+            }
+        }
+
+        return $nearest;
+    }
+
+    /**
+     * Return post IDs matching the given get_posts() args that have at least
+     * one upcoming date row, ordered by nearest start_date ascending.
+     *
+     * @param  array<string, mixed>  $queryArgs
+     * @return int[]
+     */
+    public static function getUpcomingPostIds(array $queryArgs, ?string $today = null): array
+    {
+        $defaults = [
+            'post_status' => 'publish',
+            'posts_per_page' => -1,
+            'fields' => 'ids',
+            'no_found_rows' => true,
+            'update_post_meta_cache' => true,
+            'update_post_term_cache' => false,
+            'suppress_filters' => false,
+        ];
+
+        $postIds = \get_posts(array_merge($defaults, $queryArgs));
+
+        if (empty($postIds)) {
+            return [];
+        }
+
+        \update_meta_cache('post', $postIds);
+
+        $today ??= \current_time('Y-m-d');
+        $items = [];
+
+        foreach ($postIds as $postId) {
+            $postId = (int) $postId;
+            $nearest = self::getNearestUpcomingDate($postId, $today);
+
+            if ($nearest === null) {
+                continue;
+            }
+
+            $items[] = [
+                'id' => $postId,
+                'timestamp' => (int) \strtotime($nearest),
+            ];
+        }
+
+        \usort($items, static fn (array $a, array $b) => $a['timestamp'] <=> $b['timestamp']);
+
+        return array_map(static fn (array $item) => $item['id'], $items);
+    }
+
     public static function getHeaderDateLabel(int $postId): ?string
     {
         $rows = self::getDateRows($postId);

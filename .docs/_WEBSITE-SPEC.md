@@ -194,7 +194,7 @@ Guest stories and reviews. Used in the Stories & Reviews section under About Us.
 **Fields:**
 - **contributor_name** (text) - Byline name shown on story cards and singles. Leave blank to hide byline.
 
-**Archive** (/stories/)
+**Archive** (/story/)
 - Template: Listing
 - Route: decorate:post_type:story (registered in `Theme/Modules/Stories/module.php`, not `routes.php`)
 
@@ -239,6 +239,7 @@ Trip style categories used in primary navigation.
 **Archive** (/trip-styles/%slug%/) — one archive per term, e.g. /trip-styles/family/, /trip-styles/short-swims-dips/. WordPress generates these automatically from taxonomy registration; the single route below handles all terms with the same template.
 - Template: Listing
 - Route: decorate:taxonomy:trip_style
+- Ordering: see "Trip & Events Taxonomy Archive Ordering" below
 
 ---
 
@@ -272,6 +273,7 @@ Country-level taxonomy. Flat — country names only. Labeled "Destinations" in n
 **Archive** (/destinations/%slug%/) — per-country listing
 - Template: Listing
 - Route: decorate:taxonomy:country
+- Ordering: see "Trip & Events Taxonomy Archive Ordering" below
 
 ---
 
@@ -289,6 +291,7 @@ City or location name. Used alongside `country` to form the display location str
 **Archive** (/locations/%slug%/) — per-location listing
 - Template: Listing
 - Route: decorate:taxonomy:location
+- Ordering: see "Trip & Events Taxonomy Archive Ordering" below
 
 ---
 
@@ -314,7 +317,7 @@ Registered as public with rewrite enabled — WordPress generates archives at `/
 - Template: Default
 
 ### Events Archive (/events/)
-Decorated archive listing all upcoming events.
+Decorated archive listing all upcoming events. Events with no upcoming `start_date` (including coming-soon events with no dates yet) are excluded. Ordered by nearest upcoming `start_date` ascending. See "Trip & Events Taxonomy Archive Ordering" below for the shared ordering logic.
 - Template: Listing
 - Route: decorate:post_type:events
 
@@ -341,6 +344,7 @@ Chronological listing of all upcoming trip departures, grouped by month. Shows o
 
 **Display Logic:**
 - Lists all trips with at least one upcoming departure (start_date >= today)
+- Trips with no dates yet (coming-soon) are excluded — the calendar is date-based by definition
 - Shows multiple entries per trip when multiple departures are available
 - Groups entries chronologically by month/year
 - De-lists individual departures once their start_date has passed
@@ -1028,3 +1032,37 @@ Lazy-load video player with a cover image and a JS-driven play/close toggle. Not
 - **Import CLI** - `wp import-events` pulls events from external API
 - **Member area** - Password-protected pages for logged-in users
 -->
+
+### Archive Behaviour
+
+**Summary**
+
+| Route | Post types listed | Ordering | Filter | Per page |
+|---|---|---|---|---|
+| `/events/` | `events` | Nearest upcoming `start_date` ASC | Posts with no upcoming date excluded | 12 |
+| `/trip-styles/{slug}/` | `trip` + `events` | Nearest upcoming `start_date` ASC | Posts with no upcoming date excluded | 12 |
+| `/destinations/{slug}/` | `trip` + `events` | Nearest upcoming `start_date` ASC | Posts with no upcoming date excluded | 12 |
+| `/locations/{slug}/` | `trip` + `events` | Nearest upcoming `start_date` ASC | Posts with no upcoming date excluded | 12 |
+| `/calendar/` | `trip` (one row per departure) | `start_date` ASC, grouped by month | Past departures de-listed; trips with no upcoming dates excluded | n/a (full list) |
+| `/story/` | `story` | `post_date` DESC (WP default) | None | 12 |
+| `/swim-type/{slug}/` | `trip` + `events` | `post_date` DESC (WP default) | None | WP default — not linked from front end |
+
+Note: `trip_style`, `country`, `location`, and `swim_type` are all registered to both `trip` and `events`, so both post types appear together on those taxonomy archives.
+
+### Trip & Events Taxonomy Archive Ordering
+
+Applies to `/trip-styles/{slug}/`, `/destinations/{slug}/`, `/locations/{slug}/`, and `/events/`. Implemented in `Theme/Modules/Trips/module.php::orderTaxonomyArchives` and `Theme/Modules/Events/module.php::filterArchiveToUpcomingEvents`, both via `pre_get_posts` on the main query. Shared ordering logic lives in `Theme/Utils/TripData::getUpcomingPostIds()`.
+
+**Default ordering:**
+- Posts ordered by the nearest upcoming `dates.start_date` ascending (soonest departure first)
+- Both `trip` and `events` post types are included on the shared taxonomy archives (since `trip_style`, `country`, `location` are registered to both)
+- `posts_per_page` is set to 12 on each archive
+
+**Exclusions:**
+- Posts with no upcoming `start_date` (every `dates` row in the past, or `dates` repeater empty) are excluded entirely
+- This means "coming soon" trips/events with no scheduled dates do **not** appear on any archive or on the calendar — they remain accessible only via their single-page URLs and any manual editorial links
+
+**Manual override — Simple Custom Post Order plugin:**
+- The `simple-custom-post-order` plugin is installed; the client uses it to order taxonomy **terms** (currently configured for `trip_style` only — see `scporder_options.tags`)
+- If the plugin is later configured to manage post ordering for `trip` or `events` (`scporder_options.objects` contains either), the date-based ordering above is skipped on these archives and the plugin's manual `menu_order` is respected
+- If the plugin is deactivated entirely, the date-based ordering remains as a sensible fallback

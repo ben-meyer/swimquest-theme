@@ -99,63 +99,6 @@ class EventsModule
             return $cached;
         }
 
-        $postIds = \get_posts([
-            'post_type' => 'events',
-            'post_status' => 'publish',
-            'posts_per_page' => -1,
-            'fields' => 'ids',
-            'no_found_rows' => true,
-            'update_post_meta_cache' => true,
-            'update_post_term_cache' => false,
-            'suppress_filters' => false,
-        ]);
-
-        if (empty($postIds)) {
-            return $cached = [];
-        }
-
-        \update_meta_cache('post', $postIds);
-
-        $today = \current_time('Y-m-d');
-        $items = [];
-
-        foreach ($postIds as $postId) {
-            $postId = (int) $postId;
-            $nearest = self::getNearestUpcomingDate($postId, $today);
-
-            if ($nearest === null) {
-                continue;
-            }
-
-            $items[] = [
-                'id' => $postId,
-                'timestamp' => (int) \strtotime($nearest),
-            ];
-        }
-
-        if (empty($items)) {
-            return $cached = [];
-        }
-
-        \usort($items, static fn (array $a, array $b) => $a['timestamp'] <=> $b['timestamp']);
-
-        return $cached = array_map(static fn (array $item) => $item['id'], $items);
-    }
-
-    protected static function getNearestUpcomingDate(int $postId, string $today): ?string
-    {
-        $nearest = null;
-
-        foreach (TripData::getDateRows($postId) as $row) {
-            if (empty($row['start_date']) || $row['start_date'] < $today) {
-                continue;
-            }
-
-            if ($nearest === null || $row['start_date'] < $nearest) {
-                $nearest = $row['start_date'];
-            }
-        }
-
-        return $nearest;
+        return $cached = TripData::getUpcomingPostIds(['post_type' => 'events']);
     }
 }
