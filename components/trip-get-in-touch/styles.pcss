@@ -40,16 +40,21 @@
 
 .trip-get-in-touch__contact {
     display: flex;
-    align-items: center;
-    gap: space(2);
-    white-space: nowrap;
+    align-items: flex-start;
+    gap: space(12);
 }
 
 .trip-get-in-touch__contact svg {
     width: 16px;
     height: 16px;
-    margin-right: space(12);
     flex-shrink: 0;
+    margin-top: 0.25em;
+}
+
+@media (min-width: theme('screens.md')) {
+    .trip-get-in-touch__contact {
+        white-space: nowrap;
+    }
 }
 
 .trip-get-in-touch__contact a {
