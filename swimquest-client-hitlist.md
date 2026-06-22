@@ -10,11 +10,11 @@ The Event single template is missing 4 sections that exist on Trip: **TripIntro*
 
 Reference: `components/trip-single/template.php` (full) vs `components/event-single/template.php` (missing 4 lines). `EventSingle::transform()` doesn't fetch `intro_gallery` / `mid_gallery`.
 
-- [ ] **Add Promo block to event template** — `components/event-single/template.php`, after `TripDates`, mirror trip line 26
+- [x] **Add Promo block to event template** — `components/event-single/template.php:26`. Mirrors `trip-single/template.php` line 26.
   Closes: [Promo Block isn't appearing under dates on Scilly Swim Challenge](https://trello.com/c/4XaMY2Dv), [Promo not appearing on Events template](https://trello.com/c/03qytWDk)
-- [ ] **Add TripIntro + Intro Gallery + Mid Gallery to event template** — also fetch `intro_gallery` / `mid_gallery` in `EventSingle::transform()` (mirror `TripSingle.php:26-37`)
+- [x] **Add TripIntro + Intro Gallery + Mid Gallery to event template** — `event-single/template.php` lines 4 (TripIntro), 5 (Gallery intro), 8 (Gallery mid). `EventSingle::transform()` now fetches `intro_gallery` and `mid_gallery` (mirrors `TripSingle.php:33-34`). Commit `a535181`.
   Closes: [Intro&Galleries not appearing in Events](https://trello.com/c/fBhYcjuJ), [Elements not pulling through on King of the Thames](https://trello.com/c/0n2yvYQI)
-- [ ] **Audit Event template against Trip in full** — confirm all 17 sections in trip render or are deliberately omitted; document the omissions
+- [x] **Audit Event template against Trip in full** — `event-single/template.php` is now byte-identical to `trip-single/template.php` (verified via `diff`). The spec audit (commit `f658ec6`) re-aligned the documented layout order for Event Single accordingly.
 
 ---
 
@@ -47,7 +47,7 @@ All in `components/trip-dates/` (used by both Trip and Event) and `TripPageHeade
   Closes: [Link in intro paragraphs](https://trello.com/c/31vZISBT)
 - [x] **Reorder trip styles on homepage** — Installed `simple-custom-post-order` plugin via composer. Theme query is plugin-agnostic (no `orderby` passed). Client activates plugin → Settings → SCPOrder → tick "Trip Styles" only → drag terms into desired order.
   Closes: [Reorder trip styles](https://trello.com/c/PT7TDvdY)
-- [ ] **About Us page hierarchy** — Re-parent About Us out from under Events in WP page tree; add Guides as child of About Us (`wp post list --post_type=page` to confirm current state)
+- [ ] **About Us page hierarchy** — About Us is already at top level (`post_parent=0`, confirmed via `wp post list --post_type=page`). Remaining: re-parent Guides as a child of About Us in WP admin if still desired.
   Closes: [About Us nested under events](https://trello.com/c/aacVWlua)
 - [x] **Editor role: nav-menus access (quicklinks)** — `Gust/WordPress/Admin.php` top-level Menus item cap `manage_options` → `edit_theme_options`; `Theme/Modules/Core/Menus.php` grants editors `edit_theme_options`, hides Appearance sidebar item, redirects direct URLs (themes/customize/widgets/theme-editor) and removes the admin-bar Customize node for non-admins.
   Closes: editor quicklinks/menu access (Trello card)

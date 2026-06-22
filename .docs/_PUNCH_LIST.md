@@ -6,32 +6,16 @@ Items surfaced during audits that need investigation or fixing in code. These ar
 
 ## Open Items
 
-### 1. Banner — missing `block.json`
-**Type**: Missing artefact / possible bug  
-**Detail**: The spec lists Banner as `[Block]`. The ACF field group (`group_component_banner.json`) targets `acf/banner` as its location rule, meaning it expects a registered block. But no `block.json` exists in `components/banner/` — so the block is never registered with WordPress, and it cannot be inserted in the Gutenberg editor. The ACF group would never fire.  
-**Question**: Is Banner intentionally a partial (remove ACF location rule and fix spec), or should a `block.json` be created?
+### 1. Banner — `block.json` disabled, ACF group orphaned
+**Type**: Stale artefact / decision needed
+**Detail**: `components/banner/block.json.disabled` exists (block intentionally disabled), but `group_component_banner.json` still has a location rule targeting `acf/banner` as if the block were live. Result: the ACF group will never fire — banners are rendered programmatically only. The component works fine as a Partial.
+**Question**: Either remove the ACF location rule (or convert it to a different target if banners are wanted as a block) — or restore `block.json`. The spec has been updated to mark Banner as `[Partial]`.
 
 ---
 
-### 2. Footer ACF group not exported to JSON
-**Type**: Missing artefact / version control gap  
-**Detail**: The `acf-options-footer` field group exists in the database (confirmed — `SiteFooter.php` reads `featured_in_heading`, `featured_in_logos`, `footer_text_top`, `footer_text_bottom`, `footer_form`, `footer_images` from the `option` context). No JSON file for this group exists in `acf-json/` or any module directory — it has never been saved to disk.  
-**Question**: Export it from ACF admin (Field Groups → select group → save to JSON), or is this intentional?
-
----
-
-### 3. Taxonomy term ACF fields not in JSON
-**Type**: Missing artefact / version control gap  
-**Detail**: The spec documents term-level ACF fields for `skill_level`, `country`, and `location` (each has `subheading` textarea and `image` array). No JSON files for these groups were found on disk. They may only exist in the database.  
-**Question**: Same as above — export from ACF admin so they're version-controlled.
-
----
-
-### 4. `TripData::getStatusLabel()` missing `sold_out_private` case
-**Type**: Bug  
-**Detail**: `TripData::getStatusLabel()` is called by `getPrimaryBookingAction()`, which feeds the section nav secondary CTA. The method handles `bookable` and `sold_out` but has no case for `sold_out_private` — it falls through to the default and returns `"Book Now"`, which is wrong.  
-**Fix needed**: Add `case 'sold_out_private': return 'Private Group';` (or whatever label is correct).  
-**Question**: Confirm the right label — is it "Private Group", "Sold Out", or something else?
+### 2. `TripData::getStatusLabel()` did not handle `sold_out_private`
+**Type**: Bug — **[FIXED]**
+**Detail**: `getStatusLabel()` returned "Book Now" for `sold_out_private` via the default arm of the match. Added the explicit `'sold_out_private' => 'Private Group'` arm so the section nav secondary CTA renders the correct label. Canonical label sourced from `TripDates.php` which already uses "Private Group" for the same status.
 
 ---
 
@@ -46,3 +30,5 @@ Items surfaced during audits that need investigation or fixing in code. These ar
 - Card::transform() fallback read_more_text — **[FIXED]**
 - Cards.slider_on_mobile conditional logic undocumented — **[FIXED]**
 - Cards card_background_color and tag runtime args — **[FIXED]**
+- Footer ACF group not exported to JSON — **[RESOLVED]** — `acf-json/group_608ab0e3c02c4.json` is the Footer group (6 fields, location `acf-options-footer`)
+- Taxonomy term ACF fields not in JSON — **[RESOLVED]** — all five files exist in `Theme/Modules/Trips/acf-json/` (`group_country_taxonomy.json`, `group_location_taxonomy.json`, `group_skill_level_taxonomy.json`, `group_swim_type_taxonomy.json`, `group_trip_style_taxonomy.json`)

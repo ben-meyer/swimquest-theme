@@ -361,6 +361,7 @@ class TripData
     {
         return match ($status) {
             'sold_out' => __('Sold Out', 'gust'),
+            'sold_out_private' => __('Private Group', 'gust'),
             default => __('Book Now', 'gust'),
         };
     }
