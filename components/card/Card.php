@@ -213,7 +213,7 @@ class Card extends ComponentBase
         // Runs for both branches above; only fires if there's a button at all.
         // ====================================================================
         if (! empty($args['content']['read_more'])) {
-            $read_more_classes = ['btn', 'g-card__find-out-more'];
+            $read_more_classes = ['btn', 'g-card__find-out-more', 'btn--theme-2'];
 
             // Trip-style cards use the secondary brand button colour.
             if (($args['type'] ?? null) === 'trip-style' || ($args['type'] ?? null) === 'trip-styles') {
