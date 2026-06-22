@@ -89,6 +89,10 @@
                         <?= esc_html($tripFinishTime); ?>
                     </h6>
                 <?php endif; ?>
+
+                <?php if (! empty($stage['general_note'])) { ?>
+                    <div class="trip-getting-there__note"><?= wp_kses_post($stage['general_note']); ?></div>
+                <?php } ?>
             </div>
         <?php } ?>
     </div>

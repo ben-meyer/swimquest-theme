@@ -66,8 +66,8 @@ All in `components/trip-dates/` (used by both Trip and Event) and `TripPageHeade
   Closes: [Form styling](https://trello.com/c/h4RADrOJ)
 - [x] **Itinerary day heading override** — `preview_days` repeater already has a `title` subfield (`components/trip-itinerary-preview/TripItineraryPreview.php:17`). Verify it's being rendered in place of "Day N" when populated; if not, update template to prefer custom title over `sprintf('Day %d')`.
   Closes: [Override "Day 1" headings](https://trello.com/c/qSLTcfWC) - Client archived this themselves
-- [ ] **Getting There: general note field** — add a top-level textarea/wysiwyg to the Getting There ACF group, render in `TripGettingThere`
-  Closes: [General note on Getting There](https://trello.com/c/xZEJ4e9H) — *❓ confirm with Alice: above dropdowns, below, or per-dropdown?*
+- [x] **Getting There: general note field** — Added `general_note` (wysiwyg, basic_formatting toolbar, no media upload) as a sub-field of the `getting_there_stages` repeater. Each stage can carry its own note; renders inside the stage's bordered box, beneath the trip finish time, styled with `type-small` to match the rest of the block. Supports links and basic inline formatting.
+  Closes: [General note on Getting There](https://trello.com/c/xZEJ4e9H)
 
 ---
 

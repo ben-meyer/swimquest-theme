@@ -1067,6 +1067,27 @@
                             "parent_repeater": "field_trip_getting_there_steps"
                         }
                     ]
+                },
+                {
+                    "key": "field_trip_getting_there_stage_general_note",
+                    "label": "General Note",
+                    "name": "general_note",
+                    "aria-label": "",
+                    "type": "wysiwyg",
+                    "instructions": "Optional note shown beneath this stage's content (e.g. under the trip finish time on the final stage).",
+                    "required": 0,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "tabs": "all",
+                    "toolbar": "basic_formatting",
+                    "media_upload": 0,
+                    "default_value": "",
+                    "delay": 0,
+                    "parent_repeater": "field_trip_getting_there_stages"
                 }
             ]
         },
