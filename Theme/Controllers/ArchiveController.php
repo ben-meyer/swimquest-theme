@@ -25,7 +25,7 @@ class ArchiveController
             echo TripCards::make(items: $items);
             echo Pagination::make();
         } elseif (\is_tax(['country', 'trip_style', 'location'])) {
-            echo NoContent::make(content: ['message' => __('More trips coming soon.', 'gust')]);
+            echo NoContent::make(content: ['message' => __('More trips coming soon...', 'gust')]);
         } else {
             echo NoContent::make(object: $object);
         }
