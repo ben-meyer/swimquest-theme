@@ -51,7 +51,7 @@ class PostType
         ], [
             'singular' => __('Story', 'gust'),
             'plural' => __('Stories', 'gust'),
-            'slug' => self::SLUG,
+            'slug' => 'news-and-stories',
         ]);
     }
 
