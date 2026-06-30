@@ -3,10 +3,10 @@
 # See: https://github.com/jerome-toole/wp-sync
 
 pull:
-    db: false
-    themes: true
+    db: true
+    themes: false
     plugins: true
-    uploads: false
+    uploads: true
     db_backup: true
 
 push:
