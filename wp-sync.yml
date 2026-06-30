@@ -17,16 +17,11 @@ push:
     db_backup: true
 
 environments:
-    local:
-        url: https://swimquest.ddev.site
-
     staging:
-        host: benmeyer@benmeyer.digital
+        host: benmeyer@194.110.243.41
         port: 22
         path: /home/benmeyer/swimquest.benmeyer.digital
-        url: https://swimquest.benmeyer.digital
 
     production:
-        host: user@host
-        path: /home/.../public_html
-        url: https://swimquest.co.uk
+        host: swimqu@185.219.237.45
+        path: /home/swimqu/site/public_html
