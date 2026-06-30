@@ -24,4 +24,5 @@ environments:
 
     production:
         host: swimqu@185.219.237.45
+        port: 2223
         path: /home/swimqu/site/public_html
