@@ -1,3 +1,4 @@
+import { cpSync, existsSync, mkdirSync } from 'node:fs';
 import { normalize, resolve } from 'node:path';
 import fg from 'fast-glob';
 import laravel from 'laravel-vite-plugin';
@@ -60,6 +61,23 @@ function themeConfigWatcherPlugin() {
     };
 }
 
+// Copies assets/fonts/ → public/fonts/ so CSS url() references resolve correctly.
+// Needed because @tailwindcss/postcss doesn't pass `from` to PostCSS, preventing
+// Vite from resolving relative url() paths — they pass through verbatim.
+function copyFontsPlugin() {
+    const src = resolve(__dirname, 'assets/fonts');
+    const dest = resolve(__dirname, 'public/fonts');
+    return {
+        name: 'copy-fonts',
+        writeBundle() {
+            if (existsSync(src)) {
+                mkdirSync(dest, { recursive: true });
+                cpSync(src, dest, { recursive: true });
+            }
+        },
+    };
+}
+
 export default defineConfig({
     base: './',
     plugins: [
@@ -74,6 +92,7 @@ export default defineConfig({
         }),
         globImportPlugin(),
         cssGlobImportPlugin(),
+        copyFontsPlugin(),
     ],
 
     publicDir: 'assets/static',

@@ -124,6 +124,10 @@ class Admin
      */
     public static function disallowFileEdit()
     {
+        if (defined('DISALLOW_FILE_EDIT')) {
+            return;
+        }
+
         define('DISALLOW_FILE_EDIT', true);
     }
 
