@@ -11,7 +11,7 @@
         "preview": "vite preview",
         "setup": "npm install && composer install && npm run build",
         "site-setup": "bash dev-scripts/site-setup.sh",
-        "build:production": "npm install && composer install --no-dev && npm run build && wp works generate-json",
+        "build:production": "npm install && composer install --no-dev && npm run build",
         "deploy:staging": "npm run build:production && bash dev-scripts/deploy.sh staging",
         "deploy:staging:dry": "npm run build:production && bash dev-scripts/deploy.sh staging --dry-run",
         "deploy:production": "npm run build:production && bash dev-scripts/deploy.sh production",
