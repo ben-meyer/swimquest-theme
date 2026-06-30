@@ -19,15 +19,12 @@ class Updates
          *
          * @link https://make.wordpress.org/core/2020/07/15/controlling-plugin-and-theme-auto-updates-ui-in-wordpress-5-5/
          */
-        \add_filter('themes_auto_update_enabled', '__return_false');
-        \add_filter('plugins_auto_update_enabled', '__return_false');
+        // \add_filter('themes_auto_update_enabled', '__return_false');
+        // \add_filter('plugins_auto_update_enabled', '__return_false');
 
-        /**
-         * Explicitly disallow major & dev core updates, but allow minor/security updates.
-         */
-        \add_filter('allow_major_auto_core_updates', '__return_false');
+        \add_filter('allow_major_auto_core_updates', '__return_true');
         \add_filter('allow_minor_auto_core_updates', '__return_true');
-        \add_filter('allow_dev_auto_core_updates', '__return_false');
+        // \add_filter('allow_dev_auto_core_updates', '__return_false');
 
         /**
          * Remove Site Health recommendation that there may be problems with plugin and theme auto-updates.
