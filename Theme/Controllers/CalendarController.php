@@ -11,7 +11,7 @@ class CalendarController
     public static function renderContent(): string
     {
         $postIds = \get_posts([
-            'post_type' => 'trip',
+            'post_type' => ['trip', 'events'],
             'post_status' => 'publish',
             'posts_per_page' => -1,
             'orderby' => 'title',
