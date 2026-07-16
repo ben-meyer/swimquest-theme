@@ -56,12 +56,33 @@ class TripPageHeader extends ComponentBase
         $args['heading'] = $heading ?: $post->post_title;
         $args['description'] = $description ?? '';
 
-        if (! empty(TripData::getDateRows($postId))) {
-            $args['cta'] = [
-                'label' => __('View dates & book', 'gust'),
-                'url' => '#trip-dates',
-                'is_link' => true,
-            ];
+        $dateRows = TripData::getDateRows($postId);
+
+        if (! empty($dateRows)) {
+            $enquiryAction = TripData::getPrimaryEnquiryAction($postId);
+
+            if (count($dateRows) > 1) {
+                $hasBookableDate = ! empty(array_filter(
+                    $dateRows,
+                    fn ($row) => $row['status'] === 'bookable' && ! empty($row['booking_url'])
+                ));
+
+                $args['cta'] = ($enquiryAction && ! $hasBookableDate)
+                    ? $enquiryAction
+                    : ['label' => __('View dates & book', 'gust'), 'url' => '#trip-dates', 'is_link' => true];
+            } else {
+                $bookingAction = TripData::getPrimaryBookingAction($postId);
+
+                if ($enquiryAction && (! $bookingAction || ! $bookingAction['is_link'])) {
+                    $args['cta'] = $enquiryAction;
+                } else {
+                    $args['cta'] = $bookingAction ?? [
+                        'label' => __('View dates & book', 'gust'),
+                        'url' => '#trip-dates',
+                        'is_link' => true,
+                    ];
+                }
+            }
         } else {
             $args['cta'] = TripData::getPrimaryEnquiryAction($postId) ?: [
                 'label' => __('Coming Soon', 'gust'),
