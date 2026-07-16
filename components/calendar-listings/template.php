@@ -54,7 +54,7 @@ use Theme\Utils\TripData;
                                 ); ?>
                             <?php } else { ?>
                                 <?= \Gust\Components\Link::make(
-                                    title: __('View Trip', 'gust'),
+                                    title: __('Sold Out', 'gust'),
                                     url: get_permalink($post),
                                     classes: ['btn', 'btn--sm', 'btn--theme-2', 'calendar-listings__btn'],
                                 ); ?>
