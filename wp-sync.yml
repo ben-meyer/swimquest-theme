@@ -6,7 +6,7 @@ pull:
     db: true
     themes: false
     plugins: true
-    uploads: true
+    uploads: false
     db_backup: true
 
 push:
@@ -17,12 +17,9 @@ push:
     db_backup: false
 
 environments:
-    staging:
-        host: benmeyer@194.110.243.41
-        port: 22
-        path: /home/benmeyer/swimquest.benmeyer.digital
-
     production:
         host: swimqu@185.219.237.45
         port: 2223
         path: /home/swimqu/site/public_html
+        after_pull:
+            - wp plugin deactivate better-wp-security
